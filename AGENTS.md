@@ -45,3 +45,7 @@
 - 긴 지침은 `AGENTS.md`가 아니라 skill 또는 `docs/`로 분리합니다.
 - 기술 조합에만 적용되는 규칙은 개별 stack fragment가 아니라 bridge fragment로 분리합니다.
 - 기존 용어와 디렉터리 책임을 변경할 때 관련 문서를 함께 갱신합니다.
+## Codex 작업 기록 hook
+
+- `.codex/hooks`는 Codex 작업 종료 시 git-auto를 통해 GitHub와 Notion에 작업 기록을 자동화하기 위한 최소 hook 설정입니다.
+- hook이 생성하는 `.gitauto/` 산출물은 Git에 commit하지 않습니다.

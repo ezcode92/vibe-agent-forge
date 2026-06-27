@@ -1,0 +1,28 @@
+{
+  "hooks": {
+    "UserPromptSubmit": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": ".codex/hooks/capture_user_prompt.sh",
+            "timeout": 30,
+            "statusMessage": "Capturing user prompt"
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": ".codex/hooks/auto_git_auto.sh",
+            "timeout": 300,
+            "statusMessage": "Running git-auto commit"
+          }
+        ]
+      }
+    ]
+  }
+}
