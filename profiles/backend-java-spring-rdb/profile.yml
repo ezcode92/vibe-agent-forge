@@ -1,0 +1,63 @@
+id: "backend-java-spring-rdb"
+name: "Java Spring RDB Backend"
+description: "Java, Spring, RDB, RESTful API와 Modular Monolith를 조합한 backend 개발환경 초안"
+
+target_agents: []
+
+base_fragments:
+  - "core/global/agents.fragment.md"
+  - "core/project/agents.fragment.md"
+
+stacks:
+  - "stacks/language/java/agents.fragment.md"
+  - "stacks/framework/spring/agents.fragment.md"
+  - "stacks/database/rdb/agents.fragment.md"
+  - "stacks/api/restful-api/agents.fragment.md"
+  - "stacks/architecture/modular-monolith/agents.fragment.md"
+
+bridges:
+  - "stacks/bridge/java-spring/agents.fragment.md"
+  - "stacks/bridge/spring-rdb/agents.fragment.md"
+
+quality_rules:
+  - "core/quality/agents.fragment.md"
+
+skills:
+  - "skills/common/incremental-implementation/SKILL.md"
+  - "skills/common/debugging/SKILL.md"
+  - "skills/common/test-first/SKILL.md"
+  - "skills/common/code-review/SKILL.md"
+  - "skills/common/refactoring/SKILL.md"
+  - "skills/common/security-review/SKILL.md"
+  - "skills/common/commit-worklog/SKILL.md"
+  - "skills/backend/service-layer-implementation/SKILL.md"
+  - "skills/backend/repository-query-review/SKILL.md"
+  - "skills/backend/transaction-boundary-review/SKILL.md"
+  - "skills/backend/restful-api-design/SKILL.md"
+  - "skills/database/schema-change-review/SKILL.md"
+  - "skills/database/query-performance-review/SKILL.md"
+  - "skills/testing/test-scope-selection/SKILL.md"
+  - "skills/automation/git-auto-workflow/SKILL.md"
+
+adapters: []
+
+output:
+  target: "project-agents-instructions"
+  required_sections:
+    - "프로젝트 목표와 제약"
+    - "공통 품질 원칙"
+    - "Stack 및 bridge 규칙"
+    - "Skill 선택 기준"
+    - "검증 명령"
+  size_budget: "generator 확정 전 수동 검토"
+
+constraints:
+  requires:
+    - "모든 필수 fragment와 skill 참조 경로가 존재해야 함"
+    - "Java–Spring과 Spring–RDB bridge를 함께 적용해야 함"
+  excludes:
+    - "Kotlin language 및 Kotlin–Spring bridge의 동시 선택"
+  pending: []
+  notes:
+    - "Target agent와 adapter는 adapter 구현 단계에서 선택함"
+    - "현재 manifest는 수동 조합 검토용 초안임"

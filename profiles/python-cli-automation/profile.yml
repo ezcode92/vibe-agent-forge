@@ -1,0 +1,53 @@
+id: "python-cli-automation"
+name: "Python CLI Automation"
+description: "Python 기반 CLI 및 automation 프로젝트를 위한 개발환경 초안"
+
+target_agents: []
+
+base_fragments:
+  - "core/global/agents.fragment.md"
+  - "core/project/agents.fragment.md"
+
+stacks:
+  - "stacks/language/python/agents.fragment.md"
+
+bridges: []
+
+quality_rules:
+  - "core/quality/agents.fragment.md"
+
+skills:
+  - "skills/common/incremental-implementation/SKILL.md"
+  - "skills/common/debugging/SKILL.md"
+  - "skills/common/test-first/SKILL.md"
+  - "skills/common/code-review/SKILL.md"
+  - "skills/common/refactoring/SKILL.md"
+  - "skills/common/security-review/SKILL.md"
+  - "skills/common/commit-worklog/SKILL.md"
+  - "skills/testing/test-scope-selection/SKILL.md"
+  - "skills/automation/git-auto-workflow/SKILL.md"
+
+adapters: []
+
+output:
+  target: "project-agents-instructions"
+  required_sections:
+    - "프로젝트 목표와 제약"
+    - "공통 품질 원칙"
+    - "Python 언어 규칙"
+    - "Automation 및 검증 절차"
+  size_budget: "generator 확정 전 수동 검토"
+
+constraints:
+  requires:
+    - "모든 필수 fragment와 skill 참조 경로가 존재해야 함"
+  excludes:
+    - "확정되지 않은 CLI framework 규칙"
+  pending:
+    - id: "architecture-fragment"
+      status: "architecture fragment pending"
+      reason: "CLI 및 automation 목적에 맞는 architecture fragment가 아직 없음"
+  notes:
+    - "Pending 항목은 존재 경로로 해석하지 않음"
+    - "Target agent와 adapter는 adapter 구현 단계에서 선택함"
+    - "현재 manifest는 수동 조합 검토용 초안임"

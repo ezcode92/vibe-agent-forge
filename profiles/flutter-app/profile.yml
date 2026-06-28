@@ -1,0 +1,57 @@
+id: "flutter-app"
+name: "Dart Flutter App"
+description: "Dart, Flutter와 RESTful API client를 조합한 mobile app 개발환경 초안"
+
+target_agents: []
+
+base_fragments:
+  - "core/global/agents.fragment.md"
+  - "core/project/agents.fragment.md"
+
+stacks:
+  - "stacks/language/dart/agents.fragment.md"
+  - "stacks/mobile/flutter/agents.fragment.md"
+  - "stacks/api/restful-api/agents.fragment.md"
+
+bridges:
+  - "stacks/bridge/dart-flutter/agents.fragment.md"
+  - "stacks/bridge/flutter-rest-api/agents.fragment.md"
+
+quality_rules:
+  - "core/quality/agents.fragment.md"
+
+skills:
+  - "skills/common/incremental-implementation/SKILL.md"
+  - "skills/common/debugging/SKILL.md"
+  - "skills/common/test-first/SKILL.md"
+  - "skills/common/code-review/SKILL.md"
+  - "skills/common/refactoring/SKILL.md"
+  - "skills/common/security-review/SKILL.md"
+  - "skills/mobile/flutter-screen-implementation/SKILL.md"
+  - "skills/mobile/flutter-state-management/SKILL.md"
+  - "skills/mobile/flutter-api-integration/SKILL.md"
+  - "skills/mobile/flutter-build-debug/SKILL.md"
+  - "skills/testing/test-scope-selection/SKILL.md"
+
+adapters: []
+
+output:
+  target: "project-agents-instructions"
+  required_sections:
+    - "프로젝트 목표와 제약"
+    - "공통 품질 원칙"
+    - "Dart 및 Flutter 규칙"
+    - "REST API client 경계"
+    - "Mobile 검증 기준"
+  size_budget: "generator 확정 전 수동 검토"
+
+constraints:
+  requires:
+    - "모든 필수 fragment와 skill 참조 경로가 존재해야 함"
+    - "Dart–Flutter와 Flutter–REST API bridge를 함께 적용해야 함"
+  excludes:
+    - "특정 backend framework를 암묵적으로 선택하는 규칙"
+  pending: []
+  notes:
+    - "Target agent와 adapter는 adapter 구현 단계에서 선택함"
+    - "현재 manifest는 수동 조합 검토용 초안임"

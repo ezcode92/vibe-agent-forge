@@ -1,0 +1,57 @@
+id: "frontend-react"
+name: "JavaScript React Frontend"
+description: "JavaScript, React와 RESTful API client를 조합한 frontend 개발환경 초안"
+
+target_agents: []
+
+base_fragments:
+  - "core/global/agents.fragment.md"
+  - "core/project/agents.fragment.md"
+
+stacks:
+  - "stacks/language/javascript/agents.fragment.md"
+  - "stacks/frontend/react/agents.fragment.md"
+  - "stacks/api/restful-api/agents.fragment.md"
+
+bridges:
+  - "stacks/bridge/javascript-react/agents.fragment.md"
+
+quality_rules:
+  - "core/quality/agents.fragment.md"
+
+skills:
+  - "skills/common/incremental-implementation/SKILL.md"
+  - "skills/common/debugging/SKILL.md"
+  - "skills/common/test-first/SKILL.md"
+  - "skills/common/code-review/SKILL.md"
+  - "skills/common/refactoring/SKILL.md"
+  - "skills/common/security-review/SKILL.md"
+  - "skills/frontend/component-design/SKILL.md"
+  - "skills/frontend/state-management-review/SKILL.md"
+  - "skills/frontend/api-client-integration/SKILL.md"
+  - "skills/frontend/ui-error-handling/SKILL.md"
+  - "skills/testing/test-scope-selection/SKILL.md"
+
+adapters: []
+
+output:
+  target: "project-agents-instructions"
+  required_sections:
+    - "프로젝트 목표와 제약"
+    - "공통 품질 원칙"
+    - "JavaScript 및 React 규칙"
+    - "REST API client 경계"
+    - "UI 검증 기준"
+  size_budget: "generator 확정 전 수동 검토"
+
+constraints:
+  requires:
+    - "모든 필수 fragment와 skill 참조 경로가 존재해야 함"
+    - "JavaScript–React bridge를 적용해야 함"
+  excludes:
+    - "특정 backend framework를 암묵적으로 선택하는 규칙"
+  pending: []
+  notes:
+    - "Backend별 API bridge는 실제 server 조합을 선택할 때 추가함"
+    - "Target agent와 adapter는 adapter 구현 단계에서 선택함"
+    - "현재 manifest는 수동 조합 검토용 초안임"

@@ -1,0 +1,88 @@
+id: "fullstack-spring-react"
+name: "Spring React Fullstack"
+description: "Java 또는 Kotlin Spring backend와 JavaScript React frontend를 RESTful API로 연결한 fullstack 개발환경 초안"
+
+target_agents: []
+
+base_fragments:
+  - "core/global/agents.fragment.md"
+  - "core/project/agents.fragment.md"
+
+stacks:
+  - "stacks/language/javascript/agents.fragment.md"
+  - "stacks/framework/spring/agents.fragment.md"
+  - "stacks/frontend/react/agents.fragment.md"
+  - "stacks/database/rdb/agents.fragment.md"
+  - "stacks/api/restful-api/agents.fragment.md"
+  - "stacks/architecture/modular-monolith/agents.fragment.md"
+
+bridges:
+  - "stacks/bridge/spring-rdb/agents.fragment.md"
+  - "stacks/bridge/javascript-react/agents.fragment.md"
+  - "stacks/bridge/react-spring-api/agents.fragment.md"
+
+quality_rules:
+  - "core/quality/agents.fragment.md"
+
+skills:
+  - "skills/common/incremental-implementation/SKILL.md"
+  - "skills/common/debugging/SKILL.md"
+  - "skills/common/test-first/SKILL.md"
+  - "skills/common/code-review/SKILL.md"
+  - "skills/common/refactoring/SKILL.md"
+  - "skills/common/api-design-review/SKILL.md"
+  - "skills/common/security-review/SKILL.md"
+  - "skills/common/commit-worklog/SKILL.md"
+  - "skills/backend/service-layer-implementation/SKILL.md"
+  - "skills/backend/repository-query-review/SKILL.md"
+  - "skills/backend/transaction-boundary-review/SKILL.md"
+  - "skills/backend/restful-api-design/SKILL.md"
+  - "skills/database/schema-change-review/SKILL.md"
+  - "skills/database/query-performance-review/SKILL.md"
+  - "skills/frontend/component-design/SKILL.md"
+  - "skills/frontend/state-management-review/SKILL.md"
+  - "skills/frontend/api-client-integration/SKILL.md"
+  - "skills/frontend/ui-error-handling/SKILL.md"
+  - "skills/testing/test-scope-selection/SKILL.md"
+  - "skills/automation/git-auto-workflow/SKILL.md"
+
+adapters: []
+
+variants:
+  backend_language:
+    selection: "exactly-one"
+    required: true
+    options:
+      - id: "java"
+        fragments:
+          - "stacks/language/java/agents.fragment.md"
+        bridges:
+          - "stacks/bridge/java-spring/agents.fragment.md"
+      - id: "kotlin"
+        fragments:
+          - "stacks/language/kotlin/agents.fragment.md"
+        bridges:
+          - "stacks/bridge/kotlin-spring/agents.fragment.md"
+
+output:
+  target: "project-agents-instructions"
+  required_sections:
+    - "프로젝트 목표와 제약"
+    - "공통 품질 원칙"
+    - "Backend language 선택 결과"
+    - "Spring backend 및 React frontend 규칙"
+    - "REST API 계약과 검증 기준"
+  size_budget: "generator 확정 전 수동 검토"
+
+constraints:
+  requires:
+    - "모든 필수 fragment와 skill 참조 경로가 존재해야 함"
+    - "backend_language variant에서 정확히 하나를 선택해야 함"
+    - "선택 language와 대응하는 Spring bridge를 함께 적용해야 함"
+  excludes:
+    - "Java와 Kotlin variant의 동시 선택"
+  pending: []
+  notes:
+    - "Variant 미선택 상태에서는 profile을 최종 조합으로 간주하지 않음"
+    - "Target agent와 adapter는 adapter 구현 단계에서 선택함"
+    - "현재 manifest는 수동 조합 검토용 초안임"

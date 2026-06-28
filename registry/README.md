@@ -30,6 +30,10 @@ Backend, database, testing과 automation의 stack-specific skill도 적용 stack
 
 Frontend와 Flutter mobile의 stack-specific skill도 UI/platform stack, API bridge, common skill 의존, 대상 agent와 상태를 추적하는 registry 관리 대상입니다. 현재는 두 영역의 8개 `SKILL.md` 초안만 작성하며 실제 catalog YAML과 library-specific metadata는 아직 만들지 않습니다.
 
+## Profile catalog
+
+Profile도 선택한 fragment·bridge·skill, variant, pending 책임과 대상 agent 상태를 추적하는 registry 관리 대상입니다. 현재 `profiles/*/profile.yml`은 registry ID가 확정되기 전의 저장소 상대 경로 기반 수동 검토용 초안이며, 실제 profile catalog YAML은 아직 만들지 않습니다.
+
 ## Compatibility matrix
 
 Compatibility matrix는 stack 간 조합, profile과 adapter 지원 범위, 필요한 bridge와 알려진 비호환 조건을 표현합니다. 지원 여부를 암묵적으로 추정하지 않고 조합 검증의 근거를 제공하는 것이 목적입니다.
