@@ -14,6 +14,8 @@ Stack catalog는 language, framework, frontend, mobile, database, architecture, 
 
 Java, Kotlin, Python, JavaScript와 Dart language fragment도 stack catalog의 관리 대상입니다. 각 항목은 source 경로, 상태, 지원 범위와 필요한 bridge 관계를 추적해야 하지만, 현재는 fragment 초안만 작성하며 실제 catalog YAML은 만들지 않습니다.
 
+Spring framework, React frontend와 Flutter mobile fragment도 stack catalog의 관리 대상입니다. Language 항목과 구분되는 분류, 기반 language 및 database/API 조합에 필요한 bridge 관계를 추적해야 하지만, 실제 catalog YAML은 아직 만들지 않습니다.
+
 ## Skill catalog
 
 Skill catalog는 공통 및 stack-specific skill의 식별자, 사용 조건, 대상 stack과 수명 주기를 찾기 위한 목록입니다. Profile은 skill 본문을 복제하지 않고 이 catalog의 식별자를 참조합니다.
