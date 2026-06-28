@@ -1,0 +1,39 @@
+# Profile manifest 템플릿입니다.
+# `<...>` placeholder를 실제 registry 식별자와 설명으로 교체합니다.
+# 이 파일 자체는 실제 profile이 아니며 상세 지침 본문을 포함하지 않습니다.
+
+id: "<profile-id>"
+name: "<profile-display-name>"
+description: "<profile-purpose-and-target-project>"
+
+target_agents:
+  - "<agent-id>"
+
+stacks:
+  - "<stack-id>"
+
+bridges:
+  - "<bridge-id>"
+
+quality_rules:
+  - "<quality-rule-id>"
+
+skills:
+  - "<skill-id>"
+
+adapters:
+  - "<adapter-id>"
+
+output:
+  target: "<logical-output-type>"
+  required_sections:
+    - "<section-name>"
+  size_budget: "<size-budget-or-policy>"
+
+constraints:
+  requires:
+    - "<required-component-id>"
+  excludes:
+    - "<conflicting-component-id>"
+  notes:
+    - "<additional-composition-constraint>"
