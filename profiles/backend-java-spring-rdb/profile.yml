@@ -18,6 +18,7 @@ stacks:
 bridges:
   - "stacks/bridge/java-spring/agents.fragment.md"
   - "stacks/bridge/spring-rdb/agents.fragment.md"
+  - "stacks/bridge/spring-modular-monolith/agents.fragment.md"
 
 quality_rules:
   - "core/quality/agents.fragment.md"
@@ -49,12 +50,17 @@ output:
     - "Stack 및 bridge 규칙"
     - "Skill 선택 기준"
     - "검증 명령"
-  size_budget: "generator 확정 전 수동 검토"
+  size_budget:
+    policy: "docs/output-size-budget.md"
+    max_lines: 300
+    max_headings: 24
+    max_estimated_tokens: 4000
+    error_threshold: "공통 error 기준 적용"
 
 constraints:
   requires:
     - "모든 필수 fragment와 skill 참조 경로가 존재해야 함"
-    - "Java–Spring과 Spring–RDB bridge를 함께 적용해야 함"
+    - "Java–Spring, Spring–RDB와 Spring–Modular Monolith bridge를 함께 적용해야 함"
   excludes:
     - "Kotlin language 및 Kotlin–Spring bridge의 동시 선택"
   pending: []

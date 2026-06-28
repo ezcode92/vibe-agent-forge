@@ -18,6 +18,7 @@ stacks:
 
 bridges:
   - "stacks/bridge/spring-rdb/agents.fragment.md"
+  - "stacks/bridge/spring-modular-monolith/agents.fragment.md"
   - "stacks/bridge/javascript-react/agents.fragment.md"
   - "stacks/bridge/react-spring-api/agents.fragment.md"
 
@@ -72,13 +73,19 @@ output:
     - "Backend language 선택 결과"
     - "Spring backend 및 React frontend 규칙"
     - "REST API 계약과 검증 기준"
-  size_budget: "generator 확정 전 수동 검토"
+  size_budget:
+    policy: "docs/output-size-budget.md"
+    max_lines: 300
+    max_headings: 24
+    max_estimated_tokens: 4000
+    error_threshold: "공통 error 기준 적용"
 
 constraints:
   requires:
     - "모든 필수 fragment와 skill 참조 경로가 존재해야 함"
     - "backend_language variant에서 정확히 하나를 선택해야 함"
     - "선택 language와 대응하는 Spring bridge를 함께 적용해야 함"
+    - "Spring–RDB와 Spring–Modular Monolith bridge를 함께 적용해야 함"
   excludes:
     - "Java와 Kotlin variant의 동시 선택"
   pending: []

@@ -46,7 +46,7 @@ Catalog는 전체 자산을 검색하고 관계를 검증하기 위한 목록이
 
 ## Profile Count 기준
 
-`included_fragment_count`는 `base_fragments`, `quality_rules`, `stacks`, `bridges`의 resolved 합계다. Fullstack profile은 필수 12개에 backend language variant에서 선택되는 fragment와 bridge 2개를 더한 14개로 기록한다.
+`included_fragment_count`는 `base_fragments`, `quality_rules`, `stacks`, `bridges`의 resolved 합계다. Fullstack profile은 Spring–Modular Monolith bridge를 포함한 필수 13개에 backend language variant에서 선택되는 fragment와 bridge 2개를 더한 15개로 기록한다.
 
 `included_skill_count`는 manifest의 `skills` 목록 개수다. Count는 manifest 변경 시 함께 갱신하고 수동 검토에서 큰 불일치가 없는지 확인한다.
 

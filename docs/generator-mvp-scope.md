@@ -86,7 +86,7 @@ Codex 우선은 다른 adapter의 출력 형식이나 capability를 Codex와 같
 
 - Catalog와 profile의 path 참조를 ID 참조로 전환하는 시점
 - Semantic rule extraction 및 중복 판단 단위
-- 정량 output size/token budget
+- Agent별 context 차이에 따른 기본 output size budget 보정 기준
 - Pending/unregistered 관계의 조직별 허용 정책
 - Adapter capability version metadata
 - Preview content의 serialization과 deterministic 비교 범위

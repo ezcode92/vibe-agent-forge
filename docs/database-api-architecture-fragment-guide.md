@@ -29,7 +29,7 @@ RDB와 NoSQL은 저장소 유형의 일반 원칙, RESTful API는 HTTP 계약, a
 | `react-spring-api` | React API client와 Spring backend 사이의 request·response·error 계약 연결 |
 | `flutter-rest-api` | Flutter async UI 상태와 RESTful API response·error 계약 연결 |
 | `msa-restful-api` | Service ownership, 장애 경계와 RESTful API contract·versioning 연결 |
-| `modular-monolith-spring` | Modular Monolith module 경계와 Spring bean·configuration 경계 연결 |
+| `spring-modular-monolith` | Spring bean·configuration과 Modular Monolith module 경계 연결 |
 
 위 표는 bridge 책임의 설계 예시이며 실제 bridge fragment나 구현 규칙이 아니다. 관련 stack이 모두 선택된 경우에만 적용하고 원본 fragment에 조합 규칙을 복제하지 않는다.
 

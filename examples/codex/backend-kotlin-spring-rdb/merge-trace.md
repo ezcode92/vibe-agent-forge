@@ -16,8 +16,9 @@
 | Architecture | `architecture-modular-monolith` | `stacks/architecture/modular-monolith/agents.fragment.md` | 30 |
 | Bridge | `bridge-kotlin-spring` | `stacks/bridge/kotlin-spring/agents.fragment.md` | 50 |
 | Bridge | `bridge-spring-rdb` | `stacks/bridge/spring-rdb/agents.fragment.md` | 50 |
+| Bridge | `bridge-spring-modular-monolith` | `stacks/bridge/spring-modular-monolith/agents.fragment.md` | 50 |
 
-Profile 참조 10개와 catalog path가 모두 일치했다.
+Profile 참조 11개와 catalog path가 모두 일치했다.
 
 ## Preview Section 구성 순서
 
@@ -27,7 +28,7 @@ Profile 참조 10개와 catalog path가 모두 일치했다.
 2. Language: Kotlin
 3. Framework/platform: Spring
 4. Database/API/architecture: RDB, RESTful API, Modular Monolith
-5. Bridge: Kotlin–Spring, Spring–RDB
+5. Bridge: Kotlin–Spring, Spring–RDB, Spring–Modular Monolith
 6. Project override: 실제 입력 없음
 
 이 순서는 Markdown section 표시 순서이며 conflict authority를 뜻하지 않는다.
@@ -40,7 +41,7 @@ Profile 참조 10개와 catalog path가 모두 일치했다.
 2. Priority 20: `language-kotlin`
 3. Priority 30: `database-rdb`, `api-restful-api`, `architecture-modular-monolith`
 4. Priority 40: `framework-spring`
-5. Priority 50: `bridge-kotlin-spring`, `bridge-spring-rdb`
+5. Priority 50: `bridge-kotlin-spring`, `bridge-spring-rdb`, `bridge-spring-modular-monolith`
 6. Priority 70: `core-project`
 7. 사용자 현재 요청: 실제 generator 밖의 최종 권한
 
@@ -53,14 +54,15 @@ Profile 참조 10개와 catalog path가 모두 일치했다.
 - Kotlin/Spring/RDB/REST/Modular Monolith → `core-quality`: 충족
 - `bridge-kotlin-spring` → Kotlin + Spring: 충족
 - `bridge-spring-rdb` → Spring + RDB: 충족
+- `bridge-spring-modular-monolith` → Spring + Modular Monolith: 충족
 
 ## Compatibility 확인
 
 - Kotlin + Spring: `requires-bridge`, `bridge-kotlin-spring` 선택됨
 - Spring + RDB: `requires-bridge`, `bridge-spring-rdb` 선택됨
-- Spring + Modular Monolith: `bridge-pending`, 실제 required bridge ID 없음
+- Spring + Modular Monolith: `requires-bridge`, `bridge-spring-modular-monolith` 선택됨
 
-마지막 관계는 incompatible이 아니지만 지원 완료도 아니므로 warning과 수동 검토 대상으로 남겼다.
+세 관계 모두 supported 상태이며 required bridge가 profile에 포함됐다.
 
 ## 중복 제거 후보
 
@@ -70,7 +72,7 @@ Profile 참조 10개와 catalog path가 모두 일치했다.
 | REST 기본 품질 | Core quality와 RESTful API fragment | Core의 일반 기준은 축약하고 REST fragment의 contract 규칙으로 구체화 |
 | Transaction | Spring, RDB, Spring–RDB bridge | 독립 원칙은 유지하고 둘 사이의 lifecycle 연결은 bridge에만 둠 |
 | Null·coroutine | Kotlin과 Kotlin–Spring bridge | 언어 사용 원칙은 Kotlin에, binding/proxy/context 상호작용은 bridge에 둠 |
-| Module/component 경계 | Modular Monolith와 Spring | 각 독립 경계는 유지하고 구체 연결은 pending warning으로 표시 |
+| Module/component 경계 | Modular Monolith, Spring과 Spring–Modular Monolith bridge | 독립 원칙은 유지하고 bean/module·transaction/table ownership 연결은 bridge에 둠 |
 
 실제 semantic deduplication engine이 없으므로 완전한 규칙 단위 제거를 수행하지 않고 preview 압축 시 반복 문장만 수동 축약했다.
 
@@ -79,9 +81,9 @@ Profile 참조 10개와 catalog path가 모두 일치했다.
 - Java 및 `bridge-java-spring`이 선택되지 않아 profile exclude 조건과 충돌하지 않았다.
 - Monolith/MSA architecture가 선택되지 않아 architecture conflict가 없다.
 - Required bridge 누락이 없다.
-- Spring–Modular Monolith 관계는 pending이며 blocking conflict가 아니라 warning으로 분류했다.
-- Project metadata와 정량 size budget 미확정은 warning이다.
+- Spring–Modular Monolith 관계가 supported bridge로 해소됐다.
+- Project metadata placeholder는 실제 적용 전 입력 필요 사항이며 catalog compatibility warning은 아니다.
 
 ## 결과
 
-Fragment 집합은 Codex preview로 수동 구성 가능하다. 다만 merge engine이 없고 pending architecture bridge가 있으므로 결과는 `ready-with-warnings`이며 실제 export 대상이 아니다.
+Fragment 집합은 Codex preview로 수동 구성 가능하다. Compatibility와 size budget warning은 해소됐으며 Codex adapter draft warning 때문에 결과는 `ready-with-warnings`이다. 실제 export 대상은 아니다.

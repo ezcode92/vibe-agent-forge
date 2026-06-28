@@ -6,7 +6,7 @@ profiles:
     description: "Kotlin, Spring, RDB, RESTful API와 Modular Monolith backend 조합"
     target_project_type: "backend"
     primary_language: ["kotlin"]
-    included_fragment_count: 10
+    included_fragment_count: 11
     included_skill_count: 15
     adapter_targets: []
     status: "draft"
@@ -17,7 +17,7 @@ profiles:
     description: "Java, Spring, RDB, RESTful API와 Modular Monolith backend 조합"
     target_project_type: "backend"
     primary_language: ["java"]
-    included_fragment_count: 10
+    included_fragment_count: 11
     included_skill_count: 15
     adapter_targets: []
     status: "draft"
@@ -61,10 +61,10 @@ profiles:
     description: "Java 또는 Kotlin Spring backend와 JavaScript React frontend 조합"
     target_project_type: "fullstack"
     primary_language: ["java-or-kotlin", "javascript"]
-    included_fragment_count: 14
+    included_fragment_count: 15
     included_skill_count: 20
     adapter_targets: []
     status: "draft"
     count_notes:
-      required_fragments: 12
+      required_fragments: 13
       selected_variant_fragments: 2

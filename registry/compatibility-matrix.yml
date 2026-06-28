@@ -59,10 +59,10 @@ compatibility:
   - id: "spring-modular-monolith"
     source: "framework-spring"
     target: "architecture-modular-monolith"
-    relation: "bridge-pending"
-    required_bridge: null
-    status: "pending"
-    notes: "modular-monolith-spring bridge가 아직 존재하지 않아 조합 규칙을 수동 검토해야 함"
+    relation: "requires-bridge"
+    required_bridge: "bridge-spring-modular-monolith"
+    status: "supported"
+    notes: "Spring bean·transaction과 module 공개 API·데이터 소유권 연결에 bridge가 필요함"
 
   - id: "spring-msa"
     source: "framework-spring"

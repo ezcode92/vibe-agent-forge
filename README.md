@@ -28,6 +28,8 @@ MVP generator도 현재는 profile과 registry를 검증해 agent 설정 preview
 
 Phase 9에서는 `backend-kotlin-spring-rdb` profile과 Codex adapter를 대상으로 문서 기반 manual dry-run을 수행해 preview 조합 가능성을 검증합니다. Dry-run example은 실제 agent 설정으로 export하지 않습니다.
 
+Dry-run에서 확인된 Spring–Modular Monolith bridge와 정량 output size budget 누락은 설계 문서와 registry/profile 수준에서 보강하며, 실제 generator 구현 범위는 계속 제외합니다.
+
 ## 아직 구현하지 않을 것
 
 초기 단계에서는 다음 항목을 구현하지 않습니다.

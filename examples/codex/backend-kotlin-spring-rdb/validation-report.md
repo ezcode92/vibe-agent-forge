@@ -11,8 +11,8 @@
 | Overall status | `passed-with-warnings` |
 | Preview status | `ready-with-warnings` |
 | Error | 0 |
-| Warning | 3 |
-| Info | 6 |
+| Warning | 1 |
+| Info | 8 |
 | File write | 수행하지 않음 |
 
 ## Check 결과
@@ -20,14 +20,14 @@
 | Check | Severity | Status | 근거와 결과 |
 | --- | --- | --- | --- |
 | YAML parse | Info | Passed | Registry catalog 5개와 대상 profile manifest가 YAML로 parse됨 |
-| Path existence | Info | Passed | Catalog 5개, profile, adapter, template, fragment 10개와 skill 15개 등 dry-run 필수 source가 존재함 |
-| Duplicate ID | Info | Passed | Fragment 26, skill 24, profile 6, adapter 3, compatibility 10 entry가 각 catalog namespace에서 유일함 |
+| Path existence | Info | Passed | Catalog 5개, profile, adapter, template, fragment 11개와 skill 15개 등 dry-run 필수 source가 존재함 |
+| Duplicate ID | Info | Passed | Fragment 27, skill 24, profile 6, adapter 3, compatibility 10 entry가 각 catalog namespace에서 유일함 |
 | Missing dependency | Info | Passed | 선택 fragment와 skill의 hard dependency가 모두 profile 집합에서 충족됨 |
 | Unresolved optional item | Info | Passed | 대상 profile에는 variant와 pending item이 없고 optional 추가 선택도 없음 |
-| Compatibility violation | Warning | Warning | Incompatible 관계는 없으나 Spring–Modular Monolith 관계가 `bridge-pending` 상태임 |
-| Missing bridge | Info | Passed | Kotlin–Spring 및 Spring–RDB required bridge가 모두 선택됨. Pending architecture 관계에는 실제 bridge ID가 없음 |
+| Compatibility violation | Info | Passed | Kotlin–Spring, Spring–RDB와 Spring–Modular Monolith 관계가 모두 supported이며 incompatible 관계가 없음 |
+| Missing bridge | Info | Passed | 세 compatibility 관계의 required bridge가 모두 profile에 선택됨 |
 | Unsupported adapter output | Warning | Warning | Codex project preview template은 존재하지만 adapter가 draft이며 실제 file write·skill 설치·hook 병합은 지원하지 않음 |
-| Output length warning | Warning | Warning | Profile size budget이 `generator 확정 전 수동 검토`로 비정량적이어서 길이 통과를 확정할 수 없음 |
+| Output length warning | Info | Passed | Preview 110 lines, 16 headings, 약 1,540 estimated tokens로 300/24/4,000 목표 안이며 skill body inline이 없음 |
 
 ## YAML Parse
 
@@ -42,7 +42,7 @@
 
 ## Path Existence
 
-- Profile fragment reference: 10/10 존재
+- Profile fragment reference: 11/11 존재
 - Profile skill reference: 15/15 존재
 - Codex adapter 문서: 존재
 - Codex `AGENTS.md` template: 존재
@@ -56,7 +56,7 @@ Pending path를 실제 source로 해석하지 않았다.
 - Skill hard dependency: 모두 충족
 - Kotlin + Spring → `bridge-kotlin-spring`: 선택됨
 - Spring + RDB → `bridge-spring-rdb`: 선택됨
-- Spring + Modular Monolith: bridge가 catalog에 없어 pending warning 유지
+- Spring + Modular Monolith → `bridge-spring-modular-monolith`: 선택됨
 
 ## Conflict
 
@@ -84,8 +84,8 @@ Error가 없고 필수 path, dependency, compatibility bridge와 template이 확
 
 다음 warning은 실제 적용 전에 해결하거나 명시적으로 수용해야 한다.
 
-1. Spring–Modular Monolith bridge pending
-2. Codex adapter draft 및 file write/skill/hook output 미지원
-3. 정량 output size budget 미정
+1. Codex adapter draft 및 file write/skill/hook output 미지원
+
+Phase 9-1의 Spring–Modular Monolith pending과 비정량 output size budget warning은 해소됐다. Size 판정은 `docs/output-size-budget.md`의 수동 추정 기준을 사용했으며 실제 tokenizer 구현을 의미하지 않는다.
 
 최종 판정은 `ready-with-warnings`다. `AGENTS.preview.md`는 review용 example이며 export 가능한 실제 설정이 아니다.

@@ -93,9 +93,11 @@ Codex preview를 Claude/Gemini content로 재사용하지 않는다. 같은 reso
 
 ## Length와 Placeholder 정책
 
-- Profile size budget과 adapter template section을 검토한다.
-- 정량 budget이 없으면 actual length를 성공으로 판정하지 않고 info/warning으로 보고한다.
+- `docs/output-size-budget.md`의 output type별 line, heading과 estimated token 기준을 적용한다.
+- Profile `output.size_budget`이 더 엄격한 값을 선언하면 profile 값을 적용하고 공통 error 기준을 함께 확인한다.
+- 측정 결과, 적용 threshold와 severity를 validation report에 기록한다.
 - 필수 규칙을 임의 절단하지 않는다.
+- Skill body inline은 길이와 관계없이 error로 처리한다.
 - 미치환 필수 placeholder는 error, 의도적 optional placeholder는 명시적 `해당 없음` 상태로 바꾼다.
 
 ## File Write 금지

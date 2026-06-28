@@ -242,6 +242,17 @@ fragments:
     priority: 50
     status: "draft"
 
+  - id: "bridge-spring-modular-monolith"
+    name: "Spring–Modular Monolith Bridge"
+    category: "bridge"
+    path: "stacks/bridge/spring-modular-monolith/agents.fragment.md"
+    description: "Spring bean·transaction과 module 공개 API·데이터 소유권 연결 규칙"
+    required: false
+    conflicts_with: []
+    depends_on: ["framework-spring", "architecture-modular-monolith"]
+    priority: 50
+    status: "draft"
+
   - id: "bridge-javascript-react"
     name: "JavaScript–React Bridge"
     category: "bridge"
