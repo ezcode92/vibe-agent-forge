@@ -1,0 +1,41 @@
+# <프로젝트 이름> Claude 작업 지침
+
+> 이 문서는 Claude용 `CLAUDE.md` 출력 구조의 초안입니다. 실제 settings, hooks, commands와 skills를 생성하지 않으며 `<...>` placeholder만 정의합니다.
+
+## Project Overview (프로젝트 개요)
+
+<프로젝트 목적, 현재 단계와 작업 범위>
+
+## Tech Stack (기술 스택)
+
+- <선택된 language, framework/platform, database/API와 architecture>
+- <해소된 variant와 적용 bridge>
+
+## Included Fragments (포함 Fragment)
+
+- <병합 source 식별자와 적용 scope>
+
+<실제 fragment 본문은 adapter 입력 검증 후 별도 변환합니다.>
+
+## Included Skills (포함 Skill)
+
+- <조건부 skill 식별자, trigger와 Claude mapping 상태>
+
+## Working Rules (작업 규칙)
+
+<Claude project 지침으로 표현 가능한 상시 규칙>
+
+## Validation Commands (검증 명령)
+
+- <확인된 명령과 실행 조건>
+
+## Done Definition (완료 기준)
+
+- <완료 결과, 검증과 보고 기준>
+
+## Scope Boundary (범위 경계)
+
+- Project settings: <공유 가능한 설정 범위>
+- Local settings: <로컬 전용 설정 범위>
+- Extensions: <hooks·commands·skills의 지원 또는 pending 상태>
+- Unsupported: <미지원 기능과 수동 mapping 요구>

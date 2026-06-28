@@ -1,0 +1,53 @@
+# <프로젝트 이름> 작업 지침
+
+> 이 문서는 Codex용 project `AGENTS.md` 출력 구조의 초안입니다. 모든 `<...>` placeholder는 검증된 profile과 project 입력으로 치환해야 합니다.
+
+## Project Overview (프로젝트 개요)
+
+<프로젝트 목적, 현재 단계, 주요 사용자와 허용된 작업 범위>
+
+## Tech Stack (기술 스택)
+
+- Language: <선택된 language>
+- Framework/Platform: <선택된 framework 또는 platform>
+- Database/API/Architecture: <선택된 구성 또는 없음>
+- Variant: <해소된 선택형 구성 또는 없음>
+
+## Included Fragments (포함 Fragment)
+
+- Base: <core fragment 참조 목록>
+- Stack: <stack fragment 참조 목록>
+- Bridge: <bridge fragment 참조 목록>
+- Quality: <quality fragment 참조 목록>
+
+<병합된 실제 fragment 본문은 이 template에 포함하지 않습니다.>
+
+## Included Skills (포함 Skill)
+
+- <skill 식별자 또는 참조와 사용 조건>
+
+<선택되지 않은 skill과 skill 본문은 포함하지 않습니다.>
+
+## Working Rules (작업 규칙)
+
+<중복과 충돌을 해결한 프로젝트 상시 작업 규칙>
+
+## Validation Commands (검증 명령)
+
+- Build: <확인된 build 명령 또는 해당 없음>
+- Test: <확인된 test 명령 또는 해당 없음>
+- Lint/Format: <확인된 lint·format 명령 또는 해당 없음>
+- Additional: <추가 검증과 적용 조건>
+
+## Done Definition (완료 기준)
+
+- <요청 결과와 검증 증거>
+- <문서·계약 갱신 조건>
+- <미실행 검증과 남은 위험 보고 기준>
+
+## Scope Boundary (범위 경계)
+
+- Allowed: <허용 변경 범위>
+- Excluded: <금지 또는 미구현 범위>
+- Pending: <해소되지 않은 책임 또는 없음>
+- Automation: <hook과 commit/push 책임 또는 해당 없음>
