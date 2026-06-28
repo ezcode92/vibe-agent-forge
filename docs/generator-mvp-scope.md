@@ -1,0 +1,96 @@
+# Generator MVP Scope
+
+## 목적
+
+첫 generator 검증 범위를 repository source의 읽기·검증과 adapter template 기반 preview로 한정한다. 실제 파일 생성과 설치 없이 입력 계약, merge·selection과 report가 일관되는지를 확인한다.
+
+## MVP 포함 범위
+
+### Profile Load
+
+- Selected profile ID 조회
+- Profile catalog와 manifest ID/path 대조
+- Variant, pending, output과 constraint 읽기
+
+### Registry Load
+
+- Fragment, skill, profile, adapter와 compatibility catalog parse
+- ID index와 version metadata 구성 개념
+- Required field와 중복 ID 검증
+
+### Path Validation
+
+- Pending 제외 source와 template path 존재 확인
+- Profile path와 catalog path mapping
+- Missing path의 severity 및 source report
+
+### Compatibility Check
+
+- Source/target relation 조회
+- Required bridge와 `conflicts_with` 확인
+- Pending, unregistered와 incompatible 구분
+
+### Merge Order Calculation
+
+- Category별 output section 구성
+- Catalog priority 및 merge policy 적용
+- Deduplication, override와 semantic conflict 진단
+
+### Adapter Template 기반 Preview
+
+- Codex/Claude/Gemini template 선택
+- Project metadata와 selected source의 논리 mapping
+- 미치환 placeholder 및 unsupported feature 표시
+
+### Validation Report
+
+- Error/warning/info 집계
+- Preview readiness와 not-run 단계
+- Included source, conflict와 checklist 반환
+
+## MVP 제외 범위
+
+- 실제 agent 설정과 skill file write
+- Existing file read, diff, overwrite와 backup
+- Installer, package와 archive 생성
+- Web UI 구현
+- Account, login과 권한 관리
+- Remote repository 연결
+- Background sync와 catalog update
+- 자동 commit, push와 publisher 호출
+- 실제 generator 및 validator code
+- CLI, API endpoint와 server
+- Recommendation model과 conflict 자동 수정
+
+## Codex 우선 검증
+
+1. `backend-kotlin-spring-rdb` 또는 단순 profile을 Codex target 입력 사례로 수동 검토한다.
+2. `templates/codex/AGENTS.md.template`의 section mapping을 확인한다.
+3. Core/project scope, merge priority, selected skill와 validation checklist를 검증한다.
+4. Git-auto hook과 직접 commit·push 금지 정책이 unsupported/warning에서 누락되지 않는지 확인한다.
+5. `writePerformed: false`와 preview-only 상태를 확인한다.
+6. 기준 안정화 후 같은 resolved context를 Claude/Gemini adapter에 독립 적용한다.
+
+Codex 우선은 다른 adapter의 출력 형식이나 capability를 Codex와 같게 만드는 전략이 아니다.
+
+## MVP 성공 기준
+
+- 동일 입력과 source version이 동일한 논리 preview 및 check 결과를 만든다.
+- Missing path, duplicate ID, conflict와 missing bridge가 preview 전에 탐지된다.
+- Profile 기본/optional skill과 lazy loading 상태가 구분된다.
+- Warning이 있는 preview와 blocking 실패가 명확히 다르다.
+- Adapter별 template와 unsupported feature를 추적할 수 있다.
+- 어떤 경우에도 repository file write와 Git operation을 수행하지 않는다.
+
+## 구현 전 결정 필요 사항
+
+- Catalog와 profile의 path 참조를 ID 참조로 전환하는 시점
+- Semantic rule extraction 및 중복 판단 단위
+- 정량 output size/token budget
+- Pending/unregistered 관계의 조직별 허용 정책
+- Adapter capability version metadata
+- Preview content의 serialization과 deterministic 비교 범위
+
+## 현재 범위
+
+이 문서는 MVP의 설계 경계와 성공 기준만 정의한다. Generator, validator, CLI, API, Web UI와 file writer implementation은 만들지 않는다.

@@ -5,3 +5,7 @@
 ## Web UI 설계
 
 Web UI의 방향, 화면 구조, profile builder, compatibility/conflict, preview/export, project binding, 개념 데이터 모델과 MVP 범위는 `web-ui-*.md` 및 관련 flow 문서에서 설명합니다. 현재는 텍스트 기반 설계만 존재하며 실제 Web UI, API, database, generator와 installer 구현은 없습니다.
+
+## MVP Generator 설계
+
+Generator의 입력·출력 계약, 처리 pipeline, fragment merge, skill 선택, validation report와 MVP 범위는 `generator-*.md`, `fragment-merge-strategy.md`, `skill-selection-strategy.md`에서 설명합니다. 현재는 preview-only 설계 단계이며 generator, validator, CLI, API와 file writer 구현은 없습니다.
