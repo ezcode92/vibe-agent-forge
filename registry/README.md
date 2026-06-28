@@ -12,6 +12,8 @@ Global, project, quality core fragment도 출처, 상태와 조합 관계를 추
 
 Stack catalog는 language, framework, frontend, mobile, database, architecture, API와 bridge 구성 요소의 식별자, 상태, 버전과 의존 관계를 찾기 위한 목록입니다. 향후 각 항목이 제공하는 fragment와 필수·배타 조합을 참조할 수 있어야 합니다.
 
+Java, Kotlin, Python, JavaScript와 Dart language fragment도 stack catalog의 관리 대상입니다. 각 항목은 source 경로, 상태, 지원 범위와 필요한 bridge 관계를 추적해야 하지만, 현재는 fragment 초안만 작성하며 실제 catalog YAML은 만들지 않습니다.
+
 ## Skill catalog
 
 Skill catalog는 공통 및 stack-specific skill의 식별자, 사용 조건, 대상 stack과 수명 주기를 찾기 위한 목록입니다. Profile은 skill 본문을 복제하지 않고 이 catalog의 식별자를 참조합니다.
