@@ -24,6 +24,8 @@ Bridge fragment도 필수 stack 조합, 적용 조건, 추가 의존, 충돌과 
 
 Skill catalog는 공통 및 stack-specific skill의 식별자, 사용 조건, 대상 stack과 수명 주기를 찾기 위한 목록입니다. Profile은 skill 본문을 복제하지 않고 이 catalog의 식별자를 참조합니다.
 
+Common skill도 trigger, source 경로, 대상 agent, 상태와 다른 skill과의 의존·충돌을 추적하는 registry 관리 대상입니다. 현재는 8개 common `SKILL.md` 초안만 작성하고 실제 skill catalog YAML은 만들지 않습니다.
+
 ## Compatibility matrix
 
 Compatibility matrix는 stack 간 조합, profile과 adapter 지원 범위, 필요한 bridge와 알려진 비호환 조건을 표현합니다. 지원 여부를 암묵적으로 추정하지 않고 조합 검증의 근거를 제공하는 것이 목적입니다.
