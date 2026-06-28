@@ -1,0 +1,81 @@
+version: 1
+compatibility:
+  - id: "kotlin-spring"
+    source: "language-kotlin"
+    target: "framework-spring"
+    relation: "requires-bridge"
+    required_bridge: "bridge-kotlin-spring"
+    status: "supported"
+    notes: "Kotlin nullability, proxy와 coroutine context 연결에 bridge가 필요함"
+
+  - id: "java-spring"
+    source: "language-java"
+    target: "framework-spring"
+    relation: "requires-bridge"
+    required_bridge: "bridge-java-spring"
+    status: "supported"
+    notes: "Java 타입·예외와 Spring component·transaction 연결에 bridge가 필요함"
+
+  - id: "javascript-react"
+    source: "language-javascript"
+    target: "frontend-react"
+    relation: "requires-bridge"
+    required_bridge: "bridge-javascript-react"
+    status: "supported"
+    notes: "JavaScript object·async와 React state·effect 연결에 bridge가 필요함"
+
+  - id: "dart-flutter"
+    source: "language-dart"
+    target: "mobile-flutter"
+    relation: "requires-bridge"
+    required_bridge: "bridge-dart-flutter"
+    status: "supported"
+    notes: "Dart null safety·비동기 model과 Flutter lifecycle 연결에 bridge가 필요함"
+
+  - id: "spring-rdb"
+    source: "framework-spring"
+    target: "database-rdb"
+    relation: "requires-bridge"
+    required_bridge: "bridge-spring-rdb"
+    status: "supported"
+    notes: "Spring transaction·repository와 RDB schema·query 연결에 bridge가 필요함"
+
+  - id: "react-restful-api"
+    source: "frontend-react"
+    target: "api-restful-api"
+    relation: "compatible"
+    required_bridge: null
+    status: "supported"
+    notes: "Backend가 Spring이면 bridge-react-spring-api를 추가하고, 그 외에는 해당 backend bridge를 별도 선택함"
+
+  - id: "flutter-restful-api"
+    source: "mobile-flutter"
+    target: "api-restful-api"
+    relation: "requires-bridge"
+    required_bridge: "bridge-flutter-rest-api"
+    status: "supported"
+    notes: "Mobile network, DTO, offline와 API version 연결에 bridge가 필요함"
+
+  - id: "spring-modular-monolith"
+    source: "framework-spring"
+    target: "architecture-modular-monolith"
+    relation: "bridge-pending"
+    required_bridge: null
+    status: "pending"
+    notes: "modular-monolith-spring bridge가 아직 존재하지 않아 조합 규칙을 수동 검토해야 함"
+
+  - id: "spring-msa"
+    source: "framework-spring"
+    target: "architecture-msa"
+    relation: "bridge-pending"
+    required_bridge: null
+    status: "pending"
+    notes: "Framework lifecycle과 service 경계를 연결하는 bridge가 아직 없음"
+
+  - id: "restful-api-msa"
+    source: "api-restful-api"
+    target: "architecture-msa"
+    relation: "bridge-pending"
+    required_bridge: null
+    status: "pending"
+    notes: "Service contract·versioning과 RESTful API를 연결하는 bridge가 아직 없음"

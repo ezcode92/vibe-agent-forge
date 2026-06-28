@@ -1,0 +1,287 @@
+version: 1
+fragments:
+  - id: "core-global"
+    name: "전역 작업 원칙"
+    category: "core"
+    path: "core/global/agents.fragment.md"
+    description: "모든 프로젝트에 공통인 응답, context, 검증, 보안과 Git 작업 원칙"
+    required: true
+    conflicts_with: []
+    depends_on: []
+    priority: 10
+    status: "draft"
+
+  - id: "core-project"
+    name: "프로젝트 지침 구조"
+    category: "core"
+    path: "core/project/agents.fragment.md"
+    description: "프로젝트 목표, 구조, 명령, architecture 경계와 완료 기준의 공통 구조"
+    required: true
+    conflicts_with: []
+    depends_on: ["core-global"]
+    priority: 70
+    status: "draft"
+
+  - id: "core-quality"
+    name: "공통 품질 원칙"
+    category: "core"
+    path: "core/quality/agents.fragment.md"
+    description: "확장성, 유지보수성, 테스트 가능성과 설계 선택의 공통 판단 기준"
+    required: true
+    conflicts_with: []
+    depends_on: ["core-global"]
+    priority: 10
+    status: "draft"
+
+  - id: "language-java"
+    name: "Java"
+    category: "language"
+    path: "stacks/language/java/agents.fragment.md"
+    description: "Java 타입, 객체, null, 예외와 collection 사용 원칙"
+    required: false
+    conflicts_with: []
+    depends_on: ["core-quality"]
+    priority: 20
+    status: "draft"
+
+  - id: "language-kotlin"
+    name: "Kotlin"
+    category: "language"
+    path: "stacks/language/kotlin/agents.fragment.md"
+    description: "Kotlin nullability, 값 타입, extension과 coroutine 사용 원칙"
+    required: false
+    conflicts_with: []
+    depends_on: ["core-quality"]
+    priority: 20
+    status: "draft"
+
+  - id: "language-python"
+    name: "Python"
+    category: "language"
+    path: "stacks/language/python/agents.fragment.md"
+    description: "Python 명시성, typing, 데이터 모델, 경로와 예외 처리 원칙"
+    required: false
+    conflicts_with: []
+    depends_on: ["core-quality"]
+    priority: 20
+    status: "draft"
+
+  - id: "language-javascript"
+    name: "JavaScript"
+    category: "language"
+    path: "stacks/language/javascript/agents.fragment.md"
+    description: "JavaScript module, 비동기, 오류, 데이터 변경과 타입 안정성 원칙"
+    required: false
+    conflicts_with: []
+    depends_on: ["core-quality"]
+    priority: 20
+    status: "draft"
+
+  - id: "language-dart"
+    name: "Dart"
+    category: "language"
+    path: "stacks/language/dart/agents.fragment.md"
+    description: "Dart null safety, 비동기 값, model과 collection 처리 원칙"
+    required: false
+    conflicts_with: []
+    depends_on: ["core-quality"]
+    priority: 20
+    status: "draft"
+
+  - id: "framework-spring"
+    name: "Spring"
+    category: "framework"
+    path: "stacks/framework/spring/agents.fragment.md"
+    description: "Spring component, configuration, transaction, validation과 test 경계"
+    required: false
+    conflicts_with: []
+    depends_on: ["core-quality"]
+    priority: 40
+    status: "draft"
+
+  - id: "frontend-react"
+    name: "React"
+    category: "frontend"
+    path: "stacks/frontend/react/agents.fragment.md"
+    description: "React component, state, effect, API client와 rendering 원칙"
+    required: false
+    conflicts_with: []
+    depends_on: ["language-javascript", "core-quality"]
+    priority: 40
+    status: "draft"
+
+  - id: "mobile-flutter"
+    name: "Flutter"
+    category: "mobile"
+    path: "stacks/mobile/flutter/agents.fragment.md"
+    description: "Flutter widget, state, navigation, API client와 platform 경계"
+    required: false
+    conflicts_with: []
+    depends_on: ["language-dart", "core-quality"]
+    priority: 40
+    status: "draft"
+
+  - id: "database-rdb"
+    name: "RDB"
+    category: "database"
+    path: "stacks/database/rdb/agents.fragment.md"
+    description: "관계형 schema, transaction, index, migration과 query 원칙"
+    required: false
+    conflicts_with: []
+    depends_on: ["core-quality"]
+    priority: 30
+    status: "draft"
+
+  - id: "database-nosql"
+    name: "NoSQL"
+    category: "database"
+    path: "stacks/database/nosql/agents.fragment.md"
+    description: "Access pattern, partition, consistency와 schema 관리 원칙"
+    required: false
+    conflicts_with: []
+    depends_on: ["core-quality"]
+    priority: 30
+    status: "draft"
+
+  - id: "api-restful-api"
+    name: "RESTful API"
+    category: "api"
+    path: "stacks/api/restful-api/agents.fragment.md"
+    description: "Resource, HTTP 의미, contract, 목록 조회와 versioning 원칙"
+    required: false
+    conflicts_with: []
+    depends_on: ["core-quality"]
+    priority: 30
+    status: "draft"
+
+  - id: "architecture-monolith"
+    name: "Monolith"
+    category: "architecture"
+    path: "stacks/architecture/monolith/agents.fragment.md"
+    description: "단일 배포 단위의 단순한 내부 경계와 의존 원칙"
+    required: false
+    conflicts_with: ["architecture-modular-monolith", "architecture-msa"]
+    depends_on: ["core-quality"]
+    priority: 30
+    status: "draft"
+
+  - id: "architecture-modular-monolith"
+    name: "Modular Monolith"
+    category: "architecture"
+    path: "stacks/architecture/modular-monolith/agents.fragment.md"
+    description: "단일 배포 안의 module 공개 경계, 의존 방향과 데이터 소유권 원칙"
+    required: false
+    conflicts_with: ["architecture-monolith", "architecture-msa"]
+    depends_on: ["core-quality"]
+    priority: 30
+    status: "draft"
+
+  - id: "architecture-msa"
+    name: "MSA"
+    category: "architecture"
+    path: "stacks/architecture/msa/agents.fragment.md"
+    description: "독립 service의 배포, 통신 실패, 데이터 소유권과 운영 원칙"
+    required: false
+    conflicts_with: ["architecture-monolith", "architecture-modular-monolith"]
+    depends_on: ["core-quality"]
+    priority: 30
+    status: "draft"
+
+  - id: "architecture-clean-architecture"
+    name: "Clean Architecture"
+    category: "architecture"
+    path: "stacks/architecture/clean-architecture/agents.fragment.md"
+    description: "Use case 중심 경계와 외부 기술에서 내부 policy로 향하는 의존 원칙"
+    required: false
+    conflicts_with: []
+    depends_on: ["core-quality"]
+    priority: 30
+    status: "draft"
+
+  - id: "architecture-hexagonal-architecture"
+    name: "Hexagonal Architecture"
+    category: "architecture"
+    path: "stacks/architecture/hexagonal-architecture/agents.fragment.md"
+    description: "Port와 adapter로 application core를 외부 기술에서 격리하는 원칙"
+    required: false
+    conflicts_with: []
+    depends_on: ["core-quality"]
+    priority: 30
+    status: "draft"
+
+  - id: "bridge-kotlin-spring"
+    name: "Kotlin–Spring Bridge"
+    category: "bridge"
+    path: "stacks/bridge/kotlin-spring/agents.fragment.md"
+    description: "Kotlin nullability·coroutine과 Spring binding·proxy·transaction 연결 규칙"
+    required: false
+    conflicts_with: ["bridge-java-spring"]
+    depends_on: ["language-kotlin", "framework-spring"]
+    priority: 50
+    status: "draft"
+
+  - id: "bridge-java-spring"
+    name: "Java–Spring Bridge"
+    category: "bridge"
+    path: "stacks/bridge/java-spring/agents.fragment.md"
+    description: "Java 객체·예외 계약과 Spring layer·validation·transaction 연결 규칙"
+    required: false
+    conflicts_with: ["bridge-kotlin-spring"]
+    depends_on: ["language-java", "framework-spring"]
+    priority: 50
+    status: "draft"
+
+  - id: "bridge-spring-rdb"
+    name: "Spring–RDB Bridge"
+    category: "bridge"
+    path: "stacks/bridge/spring-rdb/agents.fragment.md"
+    description: "Spring transaction·repository와 RDB migration·query 경계 연결 규칙"
+    required: false
+    conflicts_with: []
+    depends_on: ["framework-spring", "database-rdb"]
+    priority: 50
+    status: "draft"
+
+  - id: "bridge-javascript-react"
+    name: "JavaScript–React Bridge"
+    category: "bridge"
+    path: "stacks/bridge/javascript-react/agents.fragment.md"
+    description: "JavaScript object·async와 React props·state·effect 연결 규칙"
+    required: false
+    conflicts_with: []
+    depends_on: ["language-javascript", "frontend-react"]
+    priority: 50
+    status: "draft"
+
+  - id: "bridge-dart-flutter"
+    name: "Dart–Flutter Bridge"
+    category: "bridge"
+    path: "stacks/bridge/dart-flutter/agents.fragment.md"
+    description: "Dart null safety·비동기 model과 Flutter widget lifecycle 연결 규칙"
+    required: false
+    conflicts_with: []
+    depends_on: ["language-dart", "mobile-flutter"]
+    priority: 50
+    status: "draft"
+
+  - id: "bridge-react-spring-api"
+    name: "React–Spring API Bridge"
+    category: "bridge"
+    path: "stacks/bridge/react-spring-api/agents.fragment.md"
+    description: "React client와 Spring REST API의 contract·인증·목록 조회 연결 규칙"
+    required: false
+    conflicts_with: []
+    depends_on: ["frontend-react", "framework-spring", "api-restful-api"]
+    priority: 50
+    status: "draft"
+
+  - id: "bridge-flutter-rest-api"
+    name: "Flutter–REST API Bridge"
+    category: "bridge"
+    path: "stacks/bridge/flutter-rest-api/agents.fragment.md"
+    description: "Flutter mobile lifecycle과 REST contract·offline·auth 연결 규칙"
+    required: false
+    conflicts_with: []
+    depends_on: ["mobile-flutter", "api-restful-api"]
+    priority: 50
+    status: "draft"

@@ -1,0 +1,265 @@
+version: 1
+skills:
+  - id: "common-incremental-implementation"
+    name: "Incremental Implementation"
+    category: "common"
+    path: "skills/common/incremental-implementation/SKILL.md"
+    description: "큰 변경을 검증 가능한 작은 단계로 나누어 구현하는 절차"
+    trigger_keywords: ["큰 작업", "단계별 구현", "점진적 구현"]
+    recommended_profiles: ["backend-kotlin-spring-rdb", "backend-java-spring-rdb", "python-cli-automation", "frontend-react", "flutter-app", "fullstack-spring-react"]
+    depends_on: []
+    conflicts_with: []
+    status: "draft"
+
+  - id: "common-debugging"
+    name: "Debugging"
+    category: "common"
+    path: "skills/common/debugging/SKILL.md"
+    description: "오류 재현, 증거 수집, 원인 가설과 최소 수정 절차"
+    trigger_keywords: ["버그", "오류", "실패", "원인 분석"]
+    recommended_profiles: ["backend-kotlin-spring-rdb", "backend-java-spring-rdb", "python-cli-automation", "frontend-react", "flutter-app", "fullstack-spring-react"]
+    depends_on: []
+    conflicts_with: []
+    status: "draft"
+
+  - id: "common-test-first"
+    name: "Test First"
+    category: "common"
+    path: "skills/common/test-first/SKILL.md"
+    description: "기대 동작과 실패 검증을 구현 전에 고정하는 절차"
+    trigger_keywords: ["테스트 우선", "회귀 테스트", "기대 동작"]
+    recommended_profiles: ["backend-kotlin-spring-rdb", "backend-java-spring-rdb", "python-cli-automation", "frontend-react", "flutter-app", "fullstack-spring-react"]
+    depends_on: []
+    conflicts_with: []
+    status: "draft"
+
+  - id: "common-code-review"
+    name: "Code Review"
+    category: "common"
+    path: "skills/common/code-review/SKILL.md"
+    description: "정확성, 설계, 보안과 test 누락을 근거 중심으로 검토하는 절차"
+    trigger_keywords: ["코드 리뷰", "변경 검토", "PR 리뷰"]
+    recommended_profiles: ["backend-kotlin-spring-rdb", "backend-java-spring-rdb", "python-cli-automation", "frontend-react", "flutter-app", "fullstack-spring-react"]
+    depends_on: []
+    conflicts_with: []
+    status: "draft"
+
+  - id: "common-refactoring"
+    name: "Refactoring"
+    category: "common"
+    path: "skills/common/refactoring/SKILL.md"
+    description: "외부 동작을 보존하며 구조를 작은 단계로 개선하는 절차"
+    trigger_keywords: ["리팩터링", "구조 개선", "동작 보존"]
+    recommended_profiles: ["backend-kotlin-spring-rdb", "backend-java-spring-rdb", "python-cli-automation", "frontend-react", "flutter-app", "fullstack-spring-react"]
+    depends_on: ["common-test-first"]
+    conflicts_with: []
+    status: "draft"
+
+  - id: "common-api-design-review"
+    name: "API Design Review"
+    category: "common"
+    path: "skills/common/api-design-review/SKILL.md"
+    description: "Framework와 무관한 RESTful API 계약 검토 절차"
+    trigger_keywords: ["API 리뷰", "REST 설계", "계약 검토"]
+    recommended_profiles: ["fullstack-spring-react"]
+    depends_on: []
+    conflicts_with: []
+    status: "draft"
+
+  - id: "common-security-review"
+    name: "Security Review"
+    category: "common"
+    path: "skills/common/security-review/SKILL.md"
+    description: "Secret, 입력, 권한, injection과 민감정보 위험 검토 절차"
+    trigger_keywords: ["보안 리뷰", "인가", "입력 검증", "secret"]
+    recommended_profiles: ["backend-kotlin-spring-rdb", "backend-java-spring-rdb", "python-cli-automation", "frontend-react", "flutter-app", "fullstack-spring-react"]
+    depends_on: []
+    conflicts_with: []
+    status: "draft"
+
+  - id: "common-commit-worklog"
+    name: "Commit Worklog"
+    category: "common"
+    path: "skills/common/commit-worklog/SKILL.md"
+    description: "Git-auto 저장소의 변경·검증 요약과 자동 기록 준비 절차"
+    trigger_keywords: ["작업 기록", "git-auto", "worklog"]
+    recommended_profiles: ["backend-kotlin-spring-rdb", "backend-java-spring-rdb", "python-cli-automation", "fullstack-spring-react"]
+    depends_on: []
+    conflicts_with: []
+    status: "draft"
+
+  - id: "backend-service-layer-implementation"
+    name: "Service Layer Implementation"
+    category: "backend"
+    path: "skills/backend/service-layer-implementation/SKILL.md"
+    description: "Service use case, business rule와 협력 경계를 구현하는 절차"
+    trigger_keywords: ["서비스 계층", "유스케이스 구현", "비즈니스 규칙"]
+    recommended_profiles: ["backend-kotlin-spring-rdb", "backend-java-spring-rdb", "fullstack-spring-react"]
+    depends_on: ["common-incremental-implementation", "common-test-first"]
+    conflicts_with: []
+    status: "draft"
+
+  - id: "backend-repository-query-review"
+    name: "Repository Query Review"
+    category: "backend"
+    path: "skills/backend/repository-query-review/SKILL.md"
+    description: "Repository contract, 조회 조건, join과 pagination 검토 절차"
+    trigger_keywords: ["repository 리뷰", "query 변경", "조회 검토"]
+    recommended_profiles: ["backend-kotlin-spring-rdb", "backend-java-spring-rdb", "fullstack-spring-react"]
+    depends_on: ["common-code-review"]
+    conflicts_with: []
+    status: "draft"
+
+  - id: "backend-transaction-boundary-review"
+    name: "Transaction Boundary Review"
+    category: "backend"
+    path: "skills/backend/transaction-boundary-review/SKILL.md"
+    description: "Read/write, 외부 호출, retry와 transaction 경계 검토 절차"
+    trigger_keywords: ["트랜잭션 경계", "retry", "멱등성"]
+    recommended_profiles: ["backend-kotlin-spring-rdb", "backend-java-spring-rdb", "fullstack-spring-react"]
+    depends_on: ["common-code-review"]
+    conflicts_with: []
+    status: "draft"
+
+  - id: "backend-restful-api-design"
+    name: "RESTful API Design"
+    category: "backend"
+    path: "skills/backend/restful-api-design/SKILL.md"
+    description: "Backend use case를 RESTful 외부 계약으로 설계하는 절차"
+    trigger_keywords: ["backend API", "RESTful 설계", "endpoint 설계"]
+    recommended_profiles: ["backend-kotlin-spring-rdb", "backend-java-spring-rdb", "fullstack-spring-react"]
+    depends_on: []
+    conflicts_with: []
+    status: "draft"
+
+  - id: "database-schema-change-review"
+    name: "Schema Change Review"
+    category: "database"
+    path: "skills/database/schema-change-review/SKILL.md"
+    description: "Schema 호환성, migration, index·constraint와 복구 검토 절차"
+    trigger_keywords: ["schema 변경", "migration 리뷰", "constraint 변경"]
+    recommended_profiles: ["backend-kotlin-spring-rdb", "backend-java-spring-rdb", "fullstack-spring-react"]
+    depends_on: ["common-code-review"]
+    conflicts_with: []
+    status: "draft"
+
+  - id: "database-query-performance-review"
+    name: "Query Performance Review"
+    category: "database"
+    path: "skills/database/query-performance-review/SKILL.md"
+    description: "Access pattern, index, N+1과 scan 비용 검토 절차"
+    trigger_keywords: ["query 성능", "index 후보", "N+1", "full scan"]
+    recommended_profiles: ["backend-kotlin-spring-rdb", "backend-java-spring-rdb", "fullstack-spring-react"]
+    depends_on: ["common-code-review"]
+    conflicts_with: []
+    status: "draft"
+
+  - id: "testing-test-scope-selection"
+    name: "Test Scope Selection"
+    category: "testing"
+    path: "skills/testing/test-scope-selection/SKILL.md"
+    description: "변경 위험에 맞춰 unit, integration, contract와 e2e 범위를 선택하는 절차"
+    trigger_keywords: ["테스트 범위", "unit test", "integration test", "e2e"]
+    recommended_profiles: ["backend-kotlin-spring-rdb", "backend-java-spring-rdb", "python-cli-automation", "frontend-react", "flutter-app", "fullstack-spring-react"]
+    depends_on: ["common-test-first"]
+    conflicts_with: []
+    status: "draft"
+
+  - id: "automation-git-auto-workflow"
+    name: "Git-auto Workflow"
+    category: "automation"
+    path: "skills/automation/git-auto-workflow/SKILL.md"
+    description: "Git-auto hook 실행과 publisher 실패 후 pending 재처리 절차"
+    trigger_keywords: ["git-auto", "pending", "Notion publish", "hook"]
+    recommended_profiles: ["backend-kotlin-spring-rdb", "backend-java-spring-rdb", "python-cli-automation", "fullstack-spring-react"]
+    depends_on: ["common-commit-worklog"]
+    conflicts_with: []
+    status: "draft"
+
+  - id: "frontend-component-design"
+    name: "Component Design"
+    category: "frontend"
+    path: "skills/frontend/component-design/SKILL.md"
+    description: "Component 책임, props·state·data flow와 rendering 설계 절차"
+    trigger_keywords: ["component 설계", "props", "rendering"]
+    recommended_profiles: ["frontend-react", "fullstack-spring-react"]
+    depends_on: ["common-incremental-implementation", "common-test-first"]
+    conflicts_with: []
+    status: "draft"
+
+  - id: "frontend-state-management-review"
+    name: "State Management Review"
+    category: "frontend"
+    path: "skills/frontend/state-management-review/SKILL.md"
+    description: "Local·global·server·cache state 소유권과 async 상태 검토 절차"
+    trigger_keywords: ["상태 관리", "derived state", "cache state"]
+    recommended_profiles: ["frontend-react", "fullstack-spring-react"]
+    depends_on: ["common-code-review"]
+    conflicts_with: []
+    status: "draft"
+
+  - id: "frontend-api-client-integration"
+    name: "API Client Integration"
+    category: "frontend"
+    path: "skills/frontend/api-client-integration/SKILL.md"
+    description: "Frontend API contract, 오류, pagination과 session 통합 절차"
+    trigger_keywords: ["API client", "frontend 연동", "session"]
+    recommended_profiles: ["frontend-react", "fullstack-spring-react"]
+    depends_on: ["common-security-review"]
+    conflicts_with: []
+    status: "draft"
+
+  - id: "frontend-ui-error-handling"
+    name: "UI Error Handling"
+    category: "frontend"
+    path: "skills/frontend/ui-error-handling/SKILL.md"
+    description: "사용자 오류 message, retry, 상태와 접근성 설계 절차"
+    trigger_keywords: ["UI 오류", "retry", "error state", "접근성"]
+    recommended_profiles: ["frontend-react", "fullstack-spring-react"]
+    depends_on: ["common-security-review"]
+    conflicts_with: []
+    status: "draft"
+
+  - id: "mobile-flutter-screen-implementation"
+    name: "Flutter Screen Implementation"
+    category: "mobile"
+    path: "skills/mobile/flutter-screen-implementation/SKILL.md"
+    description: "Flutter widget tree, navigation과 async UI 구현 절차"
+    trigger_keywords: ["Flutter screen", "widget tree", "navigation"]
+    recommended_profiles: ["flutter-app"]
+    depends_on: ["common-incremental-implementation", "common-test-first"]
+    conflicts_with: []
+    status: "draft"
+
+  - id: "mobile-flutter-state-management"
+    name: "Flutter State Management"
+    category: "mobile"
+    path: "skills/mobile/flutter-state-management/SKILL.md"
+    description: "Flutter local·app state, Future·Stream과 lifecycle 검토 절차"
+    trigger_keywords: ["Flutter state", "Future", "Stream", "dispose"]
+    recommended_profiles: ["flutter-app"]
+    depends_on: ["common-code-review"]
+    conflicts_with: []
+    status: "draft"
+
+  - id: "mobile-flutter-api-integration"
+    name: "Flutter API Integration"
+    category: "mobile"
+    path: "skills/mobile/flutter-api-integration/SKILL.md"
+    description: "Flutter DTO mapping, offline·retry·auth와 API version 통합 절차"
+    trigger_keywords: ["Flutter API", "offline", "token lifecycle"]
+    recommended_profiles: ["flutter-app"]
+    depends_on: ["common-security-review"]
+    conflicts_with: []
+    status: "draft"
+
+  - id: "mobile-flutter-build-debug"
+    name: "Flutter Build Debug"
+    category: "mobile"
+    path: "skills/mobile/flutter-build-debug/SKILL.md"
+    description: "Flutter flavor, target, dependency와 platform build 실패 진단 절차"
+    trigger_keywords: ["Flutter build", "flavor", "dependency 충돌", "platform target"]
+    recommended_profiles: ["flutter-app"]
+    depends_on: ["common-debugging"]
+    conflicts_with: []
+    status: "draft"

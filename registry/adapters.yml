@@ -1,0 +1,50 @@
+version: 1
+adapters:
+  - id: "codex"
+    name: "Codex Adapter"
+    path: "adapters/codex/adapter.md"
+    output_templates:
+      - "templates/codex/AGENTS.md.template"
+    supported_outputs:
+      - "전역 ~/.codex/AGENTS.md 개념"
+      - "저장소 AGENTS.md 개념"
+      - "사용자 또는 저장소 skill directory 개념"
+      - ".codex/hooks.json 개념"
+    unsupported_outputs:
+      - "실제 파일 생성과 설치"
+      - "Hook script 생성과 자동 병합"
+      - "Agent version별 capability 자동 판정"
+    priority: 10
+    status: "draft"
+
+  - id: "claude"
+    name: "Claude Adapter"
+    path: "adapters/claude/adapter.md"
+    output_templates:
+      - "templates/claude/CLAUDE.md.template"
+    supported_outputs:
+      - "CLAUDE.md 개념"
+      - "Project/local settings 개념"
+      - "Hooks, commands와 skills 확장 영역"
+    unsupported_outputs:
+      - "실제 Claude 설정 파일 생성"
+      - "Codex hook과 skill 구조의 자동 이식"
+      - "미확인 기능의 동등성 보장"
+    priority: 20
+    status: "draft"
+
+  - id: "gemini"
+    name: "Gemini Adapter"
+    path: "adapters/gemini/adapter.md"
+    output_templates:
+      - "templates/gemini/GEMINI.md.template"
+    supported_outputs:
+      - "GEMINI.md 개념"
+      - "Workspace/user settings 개념"
+      - "MCP/settings 확장 영역"
+    unsupported_outputs:
+      - "실제 Gemini 설정 파일 생성"
+      - "MCP server 설정 자동 생성"
+      - "다른 agent 기능의 자동 이식"
+    priority: 30
+    status: "draft"
