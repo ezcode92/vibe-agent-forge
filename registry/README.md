@@ -14,6 +14,8 @@
 
 현재 catalog는 실제 source와 관계를 사람이 검토하기 위한 YAML 초안입니다. Catalog를 읽는 자동 validator, generator와 installer는 아직 구현하지 않습니다. 필드 의미와 수동 검토 기준은 `docs/registry-catalog-guide.md`를 따릅니다.
 
+향후 Web UI는 이 catalog를 조회해 registry 탐색, profile 선택, compatibility 확인과 preview 근거를 제공하는 소비자로 설계합니다. 현재는 catalog reader나 Web UI 구현이 없으며 UI derived state를 catalog YAML에 기록하지 않습니다.
+
 ## Core fragment
 
 Global, project, quality core fragment도 출처, 상태와 조합 관계를 추적할 수 있도록 registry 관리 대상에 포함합니다. Core fragment는 모든 기술 조합의 공통 기반이며 stack 또는 bridge 항목으로 분류하지 않습니다.
