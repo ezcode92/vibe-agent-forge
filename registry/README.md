@@ -2,6 +2,12 @@
 
 사용 가능한 stack, skill, profile, adapter와 template의 식별자 및 메타데이터를 관리할 영역입니다.
 
+## Core fragment
+
+Global, project, quality core fragment도 출처, 상태와 조합 관계를 추적할 수 있도록 registry 관리 대상에 포함합니다. Core fragment는 모든 기술 조합의 공통 기반이며 stack 또는 bridge 항목으로 분류하지 않습니다.
+
+현재는 `core/`의 문서 초안과 책임만 정의합니다. Core 항목을 담는 실제 catalog YAML이나 확정 schema는 아직 작성하지 않습니다.
+
 ## Stack catalog
 
 Stack catalog는 language, framework, frontend, mobile, database, architecture, API와 bridge 구성 요소의 식별자, 상태, 버전과 의존 관계를 찾기 위한 목록입니다. 향후 각 항목이 제공하는 fragment와 필수·배타 조합을 참조할 수 있어야 합니다.
