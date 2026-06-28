@@ -18,6 +18,8 @@ Spring framework, React frontend와 Flutter mobile fragment도 stack catalog의 
 
 RDB·NoSQL database, RESTful API와 Monolith·Modular Monolith·MSA·Clean Architecture·Hexagonal Architecture fragment도 stack catalog의 관리 대상입니다. 저장소 유형, 전송 계약, 배포 형태와 내부 의존성 style을 구분하고 함께 선택 가능한 항목 및 bridge 관계를 추적해야 하지만, 실제 catalog YAML은 아직 만들지 않습니다.
 
+Bridge fragment도 필수 stack 조합, 적용 조건, 추가 의존, 충돌과 지원 상태를 추적하는 registry 관리 대상입니다. Bridge 등록은 구성 요소의 독립 지원과 구분하며, 현재는 7개 조합 fragment 초안만 작성하고 실제 catalog YAML과 compatibility matrix는 만들지 않습니다.
+
 ## Skill catalog
 
 Skill catalog는 공통 및 stack-specific skill의 식별자, 사용 조건, 대상 stack과 수명 주기를 찾기 위한 목록입니다. Profile은 skill 본문을 복제하지 않고 이 catalog의 식별자를 참조합니다.
