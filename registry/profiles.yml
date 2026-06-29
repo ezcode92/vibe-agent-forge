@@ -28,7 +28,7 @@ profiles:
     description: "Python 기반 CLI와 automation 프로젝트 조합"
     target_project_type: "cli-automation"
     primary_language: ["python"]
-    included_fragment_count: 4
+    included_fragment_count: 5
     included_skill_count: 9
     adapter_targets: []
     status: "draft"

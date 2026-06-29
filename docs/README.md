@@ -16,6 +16,8 @@ Generator 구현 전 수동 조합 검증 절차는 `manual-dry-run-guide.md`에
 
 Spring–Modular Monolith 조합 책임은 `spring-modular-monolith-bridge-guide.md`, agent preview의 정량 크기 기준은 `output-size-budget.md`에서 설명합니다.
 
+Python CLI와 automation의 command, side effect, retry 및 workflow 경계와 fragment 선택 기준은 `cli-automation-architecture-guide.md`에서 설명합니다. 이는 architecture 설계 문서이며 실제 CLI나 generator 구현이 아닙니다.
+
 ## Codex Adapter 계약
 
 Codex adapter의 공식 MVP 계약과 template 상태는 `codex-adapter-contract.md`, section별 source·placeholder 규칙은 `codex-output-mapping.md`, template 문구 정합성을 포함한 severity와 readiness 판정은 `codex-adapter-validation.md`에서 설명합니다. `mvp-contract`는 preview 계약의 확정을 뜻하며 generator, validator, CLI, file writer와 실제 Codex 설정 export는 아직 구현되지 않았습니다.

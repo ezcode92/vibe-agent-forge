@@ -209,6 +209,17 @@ fragments:
     priority: 30
     status: "draft"
 
+  - id: "architecture-cli-automation"
+    name: "CLI Automation Architecture"
+    category: "architecture"
+    path: "stacks/architecture/cli-automation/agents.fragment.md"
+    description: "Command, batch와 workflow의 입력·출력, side effect, 재실행과 test 경계 원칙"
+    required: false
+    conflicts_with: []
+    depends_on: ["core-quality"]
+    priority: 30
+    status: "draft"
+
   - id: "bridge-kotlin-spring"
     name: "Kotlin–Spring Bridge"
     category: "bridge"

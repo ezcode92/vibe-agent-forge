@@ -28,6 +28,8 @@ MVP generator도 현재는 profile과 registry를 검증해 agent 설정 preview
 
 Phase 9에서는 `backend-kotlin-spring-rdb`, `python-cli-automation`, `frontend-react`, `flutter-app` profile과 Codex adapter를 대상으로 문서 기반 manual dry-run을 수행해 대표 조합의 preview 가능성을 검증합니다. Dry-run example은 실제 agent 설정으로 export하지 않습니다.
 
+Python CLI dry-run의 architecture pending은 CLI Automation Architecture fragment와 catalog/profile 정합화로 해소했으며 preview 상태는 `ready`입니다. 이는 설계 검증 결과이며 실제 CLI 또는 generator 구현을 의미하지 않습니다.
+
 Dry-run에서 확인된 Spring–Modular Monolith bridge와 정량 output size budget 누락은 설계 문서와 registry/profile 수준에서 보강하며, 실제 generator 구현 범위는 계속 제외합니다.
 
 Codex adapter의 preview output, mapping, validation 계약과 Codex template 표현은 `mvp-contract` 기준으로 정리했습니다. 이는 계약과 template 문구의 정합성 확정이며 adapter 또는 generator 구현의 시작을 의미하지 않습니다.

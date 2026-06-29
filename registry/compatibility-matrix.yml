@@ -32,6 +32,14 @@ compatibility:
     status: "supported"
     notes: "Dart null safety·비동기 model과 Flutter lifecycle 연결에 bridge가 필요함"
 
+  - id: "python-cli-automation"
+    source: "language-python"
+    target: "architecture-cli-automation"
+    relation: "compatible"
+    required_bridge: null
+    status: "supported"
+    notes: "Python 언어 규칙과 CLI command·side effect architecture는 별도 bridge 없이 조합 가능함"
+
   - id: "spring-rdb"
     source: "framework-spring"
     target: "database-rdb"
