@@ -12,7 +12,8 @@ Generator 구현 없이 `fullstack-spring-react` profile의 Spring backend, Reac
 - Profile ID: `fullstack-spring-react`
 - Adapter: `adapters/codex/adapter.md`
 - Template: `templates/codex/AGENTS.md.template`
-- Preview 상태: `blocked`
+- Backend language variant: `kotlin`
+- Preview 상태: `ready`
 
 ## Fullstack 경계 검토
 
@@ -22,11 +23,11 @@ Generator 구현 없이 `fullstack-spring-react` profile의 Spring backend, Reac
 - RDB entity/schema를 frontend 계약으로 직접 노출하지 않고 transport DTO와 UI model을 구분한다.
 - Modular Monolith module 경계는 Spring bean, transaction과 table ownership에 연결한다.
 
-## Java/Kotlin Variant 해석
+## Kotlin Variant 해석
 
 Profile의 `backend_language`는 `exactly-one`, `required: true`다. Java를 선택하면 Java fragment와 Java–Spring bridge를, Kotlin을 선택하면 Kotlin fragment와 Kotlin–Spring bridge를 함께 적용해야 한다.
 
-이번 dry-run에는 실제 project language 입력이 없으므로 어느 쪽도 기본 선택하지 않았다. 두 option의 source와 dependency는 모두 검증했지만 상태는 `selection-required`이며, Codex 계약상 완성 preview는 차단된다. `AGENTS.preview.md`는 공통 구조를 보여 주는 진단용 partial preview다.
+Phase 9-7에서는 variant가 미선택이라 `blocked`였으나 이번 dry-run 입력에서 Kotlin을 선택했다. `language-kotlin`과 `bridge-kotlin-spring`을 함께 적용해 exactly-one 조건과 language–Spring bridge를 해소했다. Java option은 profile에서 삭제하지 않으며 별도의 alternative dry-run으로 선택할 수 있다.
 
 ## 산출물과 범위
 

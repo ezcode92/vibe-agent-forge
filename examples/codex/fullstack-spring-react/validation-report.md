@@ -8,9 +8,10 @@
 | --- | --- |
 | Profile | `fullstack-spring-react` |
 | Adapter | `codex` (`mvp-contract`) |
-| Overall status | `failed` |
-| Preview status | `blocked` |
-| Error | 1 |
+| Backend language variant | `kotlin` |
+| Overall status | `passed` |
+| Preview status | `ready` |
+| Error | 0 |
 | Warning | 0 |
 | File write | 수행하지 않음 |
 
@@ -20,27 +21,27 @@
 | --- | --- | --- | --- |
 | Profile YAML parse | Info | Passed | Manifest가 parse되고 profile ID, variant와 constraint를 식별함 |
 | Registry YAML parse | Info | Passed | Fragment, skill, profile, adapter와 compatibility catalog가 parse됨 |
-| Required fragment path existence | Info | Passed | 공통 13개와 두 variant 후보의 fragment·bridge 4개 path가 존재함 |
+| Required fragment path existence | Info | Passed | 공통 13개와 선택된 Kotlin fragment·bridge 2개 path가 존재함 |
 | Required skill path existence | Info | Passed | Profile skill 20개 path가 모두 존재함 |
-| Common required bridge resolved | Info | Passed | Spring–RDB, Spring–Modular Monolith, JavaScript–React, React–Spring API bridge가 선택되고 dependency가 충족됨 |
-| Backend language selection | Error | Failed | `exactly-one` 필수 variant에서 Java/Kotlin option이 선택되지 않아 대응 Spring bridge를 확정할 수 없음 |
-| Variant candidate integrity | Info | Passed | Java + Java–Spring, Kotlin + Kotlin–Spring 두 묶음의 path·dependency·compatibility가 각각 유효함 |
+| Required bridge resolved | Info | Passed | Kotlin–Spring, Spring–RDB, Spring–Modular Monolith, JavaScript–React, React–Spring API bridge가 선택되고 dependency가 충족됨 |
+| Backend language selection | Info | Passed | `exactly-one` variant에서 Kotlin 하나를 선택하고 Java는 resolved 집합에서 제외함 |
+| Alternative variant | Info | Passed | Java + Java–Spring은 profile의 후속 alternative로 유지되며 이번 preview에는 포함되지 않음 |
 | Adapter template path existence | Info | Passed | Codex template path가 존재하고 `mvp-contract` 호환 상태임 |
-| Output section completeness | Info | Diagnostic only | Partial preview에 8개 section이 있으나 필수 variant 미해소로 완성 preview가 아님 |
-| Output size budget compliance | Info | Passed | Partial preview가 300 lines, 24 headings, 4,000 estimated tokens 목표 안이고 skill body inline이 없음 |
+| Output section completeness | Info | Passed | Kotlin variant preview에 8개 필수 section과 source provenance가 있음 |
+| Output size budget compliance | Info | Passed | Preview가 300 lines, 24 headings, 4,000 estimated tokens 목표 안이고 skill body inline이 없음 |
 | Protected file untouched | Info | Passed | Root/global AGENTS, hook과 `.gitauto/`를 adapter output으로 쓰지 않음 |
 | Unsupported feature warning | Info | Passed | 실제 export, skill 설치와 hook 병합을 profile output으로 요구하지 않아 warning 없음 |
 
-## Variant Error 근거
+## Variant 해소 근거
 
-`backend_language`는 optional 추천이 아니라 `required: true`, `selection: exactly-one`이다. Profile constraint는 선택 language fragment와 대응 Spring bridge를 함께 적용하도록 요구하고 미선택 상태를 최종 조합으로 간주하지 않는다. Codex adapter 계약도 required variant와 bridge가 해소되기 전 preview를 차단한다.
+`backend_language`의 `required: true`, `selection: exactly-one` 조건에 따라 Kotlin option을 dry-run 입력으로 선택했다. `language-kotlin`과 `bridge-kotlin-spring`을 함께 resolved 집합에 포함했고 Java 묶음은 제외했다. 이에 따라 Phase 9-7의 variant 미선택 error는 해소됐다.
 
-Java나 Kotlin을 기본값으로 추정하지 않았으며 두 option을 동시에 병합하지 않았다. 다음 검증에서 project 입력으로 option 하나를 선택하면 이 error를 재평가할 수 있다.
+Java option은 profile에서 삭제하거나 무효화하지 않았으며 별도 alternative dry-run에서 선택할 수 있다. 이번 Kotlin preview에는 Java 규칙과 bridge를 혼합하지 않는다.
 
 ## Output Size
 
-측정 대상인 진단용 `AGENTS.preview.md`는 102 lines, 15 headings, 5,265 characters와 약 1,755 estimated tokens다. `docs/output-size-budget.md` 및 profile의 300/24/4,000 목표 안에 있다. 실제 tokenizer 또는 validator 구현을 의미하지 않는다.
+측정 대상 Kotlin variant `AGENTS.preview.md`는 102 lines, 15 headings, 5,189 characters와 약 1,730 estimated tokens다. `docs/output-size-budget.md` 및 profile의 300/24/4,000 목표 안에 있다. 실제 tokenizer 또는 validator 구현을 의미하지 않는다.
 
 ## Readiness
 
-공통 source, dependency, bridge, skill과 두 variant 후보는 유효하지만 required backend language가 선택되지 않았다. Error 1개로 최종 상태는 `blocked`다. `AGENTS.preview.md`는 partial diagnostic example이며 완성 preview 또는 실제 export 가능한 설정이 아니다.
+Kotlin variant, required source, dependency, bridge, skill과 section이 모두 유효하고 error와 warning이 없다. 최종 상태는 `ready`다. `AGENTS.preview.md`는 dry-run preview example이며 실제 root `AGENTS.md` 또는 export 가능한 설정이 아니다.
