@@ -29,6 +29,8 @@ Profile의 `backend_language`는 `exactly-one`, `required: true`다. Java를 선
 
 Phase 9-7에서는 variant가 미선택이라 `blocked`였으나 이번 dry-run 입력에서 Kotlin을 선택했다. `language-kotlin`과 `bridge-kotlin-spring`을 함께 적용해 exactly-one 조건과 language–Spring bridge를 해소했다. Java option은 profile에서 삭제하지 않으며 별도의 alternative dry-run으로 선택할 수 있다.
 
+Java alternative dry-run은 `examples/codex/fullstack-spring-react-java/`에 별도로 유지한다.
+
 ## 산출물과 범위
 
 `AGENTS.preview.md`, `merge-trace.md`, `skill-selection.md`, `validation-report.md`는 설계 검증 example이다. Generator, validator, CLI, file writer, skill 설치와 실제 export는 수행하지 않았다.
