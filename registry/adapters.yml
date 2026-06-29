@@ -6,16 +6,18 @@ adapters:
     output_templates:
       - "templates/codex/AGENTS.md.template"
     supported_outputs:
-      - "전역 ~/.codex/AGENTS.md 개념"
-      - "저장소 AGENTS.md 개념"
-      - "사용자 또는 저장소 skill directory 개념"
-      - ".codex/hooks.json 개념"
+      - "AGENTS.preview.md 논리 preview"
+      - "Fragment merge trace"
+      - "Skill selection report"
+      - "Validation report"
     unsupported_outputs:
-      - "실제 파일 생성과 설치"
-      - "Hook script 생성과 자동 병합"
+      - "실제 root AGENTS.md와 ~/.codex/AGENTS.md 생성"
+      - "Skill directory 설치"
+      - ".codex/hooks.json과 Hook script 생성·병합·실행"
+      - "실제 파일 export, overwrite와 backup"
       - "Agent version별 capability 자동 판정"
     priority: 10
-    status: "draft"
+    status: "mvp-contract"
 
   - id: "claude"
     name: "Claude Adapter"

@@ -8,11 +8,11 @@
 | --- | --- |
 | Profile | `backend-kotlin-spring-rdb` |
 | Adapter | `codex` |
-| Overall status | `passed-with-warnings` |
-| Preview status | `ready-with-warnings` |
+| Overall status | `passed` |
+| Preview status | `ready` |
 | Error | 0 |
-| Warning | 1 |
-| Info | 8 |
+| Warning | 0 |
+| Info | 10 |
 | File write | 수행하지 않음 |
 
 ## Check 결과
@@ -26,7 +26,8 @@
 | Unresolved optional item | Info | Passed | 대상 profile에는 variant와 pending item이 없고 optional 추가 선택도 없음 |
 | Compatibility violation | Info | Passed | Kotlin–Spring, Spring–RDB와 Spring–Modular Monolith 관계가 모두 supported이며 incompatible 관계가 없음 |
 | Missing bridge | Info | Passed | 세 compatibility 관계의 required bridge가 모두 profile에 선택됨 |
-| Unsupported adapter output | Warning | Warning | Codex project preview template은 존재하지만 adapter가 draft이며 실제 file write·skill 설치·hook 병합은 지원하지 않음 |
+| Adapter contract | Info | Passed | Codex adapter가 `mvp-contract`이며 `AGENTS.preview.md`, merge trace, skill selection report와 validation report의 계약이 확정됨 |
+| Unsupported adapter output | Info | Passed | 대상 profile은 preview-only output만 사용하며 실제 file write·skill 설치·hook 병합을 요구하지 않음 |
 | Output length warning | Info | Passed | Preview 110 lines, 16 headings, 약 1,540 estimated tokens로 300/24/4,000 목표 안이며 skill body inline이 없음 |
 
 ## YAML Parse
@@ -76,16 +77,12 @@ Pending path를 실제 source로 해석하지 않았다.
 - Existing file diff, backup와 overwrite
 - Commit, push와 외부 worklog publish
 
-따라서 unsupported output은 preview를 차단하지 않지만 실제 적용 가능성을 의미하지 않는다.
+따라서 미지원 capability는 이 profile의 선택 output에 포함되지 않으며 warning이 아니다. 이는 실제 적용 가능성을 의미하지 않는다.
 
 ## Preview Readiness 판정
 
 Error가 없고 필수 path, dependency, compatibility bridge와 template이 확인됐으므로 압축된 Codex project preview example은 만들 수 있다.
 
-다음 warning은 실제 적용 전에 해결하거나 명시적으로 수용해야 한다.
+Codex adapter는 `mvp-contract` 상태이고 대상 profile은 계약이 지원하는 preview artifact만 요구하므로 기존 draft warning은 해소됐다. Phase 9-1의 Spring–Modular Monolith pending과 비정량 output size budget warning도 해소된 상태다. Size 판정은 `docs/output-size-budget.md`의 수동 추정 기준을 사용했으며 실제 tokenizer 구현을 의미하지 않는다.
 
-1. Codex adapter draft 및 file write/skill/hook output 미지원
-
-Phase 9-1의 Spring–Modular Monolith pending과 비정량 output size budget warning은 해소됐다. Size 판정은 `docs/output-size-budget.md`의 수동 추정 기준을 사용했으며 실제 tokenizer 구현을 의미하지 않는다.
-
-최종 판정은 `ready-with-warnings`다. `AGENTS.preview.md`는 review용 example이며 export 가능한 실제 설정이 아니다.
+최종 판정은 `ready`다. `AGENTS.preview.md`는 review용 example이며 export 가능한 실제 설정이 아니다.
