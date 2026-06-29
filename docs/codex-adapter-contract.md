@@ -17,6 +17,8 @@
 
 입력은 catalog에서 추적 가능해야 하며 required path, dependency, variant와 bridge가 해소돼야 한다. Project metadata가 없는 값은 추정하지 않는다. Preview에 필수가 아닌 환경별 값은 `확인 필요` 또는 `해당 없음`으로 명시할 수 있지만, 필수 선택 자체를 이 표기로 우회할 수 없다.
 
+`templates/codex/AGENTS.md.template`는 `mvp-contract compatible` 상태의 preview/export 구조다. Template 자체의 placeholder는 입력 slot을 표시하며 실제 project instruction이나 생성 완료 artifact를 뜻하지 않는다.
+
 ## 출력 Target
 
 | Target | 필수 내용 |
@@ -96,5 +98,4 @@ Error가 없고 warning도 없으면 `ready`, error 없이 warning만 있으면 
 
 ## 계약 우선순위와 현재 한계
 
-Codex adapter 의미는 이 문서, `docs/codex-output-mapping.md`, `docs/codex-adapter-validation.md`, `adapters/codex/adapter.md` 순으로 구체화한다. Template은 section 구조를 제공하며 상태를 결정하지 않는다. Template 안의 초안 안내 문구 정리는 향후 template 변경 작업으로 남기되 현재 계약과 preview validity를 바꾸지 않는다.
-
+Codex adapter 의미는 이 문서, `docs/codex-output-mapping.md`, `docs/codex-adapter-validation.md`, `adapters/codex/adapter.md` 순으로 구체화한다. Template은 `mvp-contract`와 호환되는 section 구조를 제공하지만 adapter 구현이나 실제 file write를 의미하지 않는다. Repository root `AGENTS.md`를 포함한 보호 대상의 생성·수정 금지 원칙은 계속 적용한다.

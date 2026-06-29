@@ -4,7 +4,7 @@
 
 ## 목적
 
-Generator 구현 없이 `backend-kotlin-spring-rdb` profile의 fragment·skill 구성이 Codex project `AGENTS.md` preview 구조로 조합 가능한지 검증한다. `docs/codex-adapter-contract.md`의 `mvp-contract`를 기준으로 path, dependency, compatibility, merge order, adapter template과 output 상태를 사람이 추적할 수 있는지 확인한다.
+Generator 구현 없이 `backend-kotlin-spring-rdb` profile의 fragment·skill 구성이 Codex project `AGENTS.md` preview 구조로 조합 가능한지 검증한다. `docs/codex-adapter-contract.md`의 `mvp-contract`를 기준으로 path, dependency, compatibility, merge order, adapter template의 상태 문구 정합성과 output 상태를 사람이 추적할 수 있는지 확인한다.
 
 ## Dry-run 대상
 

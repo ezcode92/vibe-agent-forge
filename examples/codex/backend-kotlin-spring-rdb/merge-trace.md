@@ -86,4 +86,4 @@ Profile 참조 11개와 catalog path가 모두 일치했다.
 
 ## 결과
 
-Fragment 집합은 `mvp-contract` 상태의 Codex adapter 계약에 따라 preview로 수동 구성 가능하다. Compatibility, size budget과 Codex adapter draft warning이 모두 해소돼 결과는 `ready`다. 실제 export 대상은 아니다.
+Fragment 집합은 `mvp-contract` 상태의 Codex adapter 계약에 따라 preview로 수동 구성 가능하다. Compatibility, size budget과 Codex template 상태 문구의 정합성이 확인돼 결과는 `ready`다. 실제 export 대상은 아니다.

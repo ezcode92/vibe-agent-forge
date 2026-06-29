@@ -6,12 +6,15 @@ Resolved profile과 project metadata를 Codex `AGENTS.preview.md`의 8개 sectio
 
 ## 공통 규칙
 
+- `templates/codex/AGENTS.md.template`는 실제 project instruction이 아니라 `AGENTS.preview.md` 구성을 위한 preview/export template이다.
 - Template의 section 순서와 heading을 유지한다.
 - 같은 source 집합과 project metadata는 같은 논리 section 결과를 만든다.
 - Source 의미와 provenance를 보존하되 전문 복사가 아니라 상시 필요한 규칙만 요약한다.
 - 미선택 fragment, skill과 추정 기술은 추가하지 않는다.
 - 필수값은 미치환 placeholder로 남기지 않는다.
 - Project별 비필수 값이 확인되지 않으면 사실처럼 채우지 않고 `확인 필요`, 적용되지 않으면 `해당 없음`으로 표시한다.
+
+Template의 `<...>` 표현은 입력 위치와 허용 의미를 설명하는 placeholder다. Template에는 유지하되 완성된 preview에는 필수 placeholder를 남기지 않으며, placeholder 문구를 실제 project 값이나 확정된 validation command로 해석하지 않는다.
 
 ## Section별 Mapping
 
@@ -79,4 +82,3 @@ Resolved profile과 project metadata를 Codex `AGENTS.preview.md`의 8개 sectio
 - 미확정 project metadata의 자동 추정
 
 금지 mapping이 발견되면 `docs/codex-adapter-validation.md`에 따라 severity를 결정한다.
-

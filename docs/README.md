@@ -18,4 +18,4 @@ Spring–Modular Monolith 조합 책임은 `spring-modular-monolith-bridge-guide
 
 ## Codex Adapter 계약
 
-Codex adapter의 공식 MVP 계약은 `codex-adapter-contract.md`, section별 source 규칙은 `codex-output-mapping.md`, severity와 readiness 판정은 `codex-adapter-validation.md`에서 설명합니다. `mvp-contract`는 preview 계약의 확정을 뜻하며 generator, validator, CLI, file writer와 실제 Codex 설정 export는 아직 구현되지 않았습니다.
+Codex adapter의 공식 MVP 계약과 template 상태는 `codex-adapter-contract.md`, section별 source·placeholder 규칙은 `codex-output-mapping.md`, template 문구 정합성을 포함한 severity와 readiness 판정은 `codex-adapter-validation.md`에서 설명합니다. `mvp-contract`는 preview 계약의 확정을 뜻하며 generator, validator, CLI, file writer와 실제 Codex 설정 export는 아직 구현되지 않았습니다.

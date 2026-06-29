@@ -1,6 +1,6 @@
 # <프로젝트 이름> 작업 지침
 
-> 이 문서는 Codex용 project `AGENTS.md` 출력 구조의 초안입니다. 모든 `<...>` placeholder는 검증된 profile과 project 입력으로 치환해야 합니다.
+> 이 문서는 `mvp-contract`와 호환되는 Codex용 project `AGENTS.md` preview/export template입니다. 실제 project instruction이 아니며, 모든 `<...>` placeholder는 검증된 profile과 project 입력으로 치환해야 합니다.
 
 ## Project Overview (프로젝트 개요)
 
