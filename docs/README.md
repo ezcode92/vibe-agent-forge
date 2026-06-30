@@ -11,7 +11,7 @@
 - Registry: `registry/`, `registry-catalog-guide.md`
 - 상태 정책: `lifecycle-status-policy.md`
 
-현재 Phase 0~7, Phase 9와 Phase 10-1의 문서·설계 결과는 완료됐고 Phase 8은 구현 전 결정사항을 정리하는 중이다. 완료 표시는 실제 generator, validator, CLI, Web UI 또는 installer 구현을 뜻하지 않는다.
+현재 Phase 0~10-2의 문서·설계 gate는 완료됐다. Phase 10-2에서 Phase 8의 generator 구현 전 결정사항 6개를 문서 계약으로 확정했지만 실제 generator, validator, CLI, Web UI 또는 installer 구현은 시작하지 않았다.
 
 ## Web UI 설계
 
@@ -21,7 +21,7 @@ Web UI의 방향, 화면 구조, profile builder, compatibility/conflict, previe
 
 Generator의 입력·출력 계약, 처리 pipeline, fragment merge, skill 선택, validation report와 MVP 범위는 `generator-*.md`, `fragment-merge-strategy.md`, `skill-selection-strategy.md`에서 설명합니다. 현재는 preview-only 설계 단계이며 generator, validator, CLI, API와 file writer 구현은 없습니다.
 
-구현 전에 결정해야 할 실행 형태, validator와 schema 범위, project binding, output write 승인과 dry-run/export 경계는 `generator-pre-implementation-decisions.md`에서 관리합니다.
+실행 형태, validator와 schema 범위, project binding, output write 승인과 dry-run/export 경계는 `generator-pre-implementation-decisions.md`에서 모두 `decided`로 확정했습니다. MVP는 Codex 전용 read-only preview/export-plan 계약이며 실제 write는 지원하지 않습니다.
 
 ## Manual Dry-run
 

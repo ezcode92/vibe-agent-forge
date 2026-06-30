@@ -2,7 +2,7 @@
 
 ## 목적
 
-첫 generator 검증 범위를 repository source의 읽기·검증과 adapter template 기반 preview로 한정한다. 실제 파일 생성과 설치 없이 입력 계약, merge·selection과 report가 일관되는지를 확인한다.
+첫 generator 범위를 repository source의 읽기·검증과 Codex adapter template 기반 preview/export plan 구성으로 한정한다. 실제 파일 생성과 설치 없이 입력 계약, merge·selection과 report가 일관되는지를 확인한다.
 
 ## MVP 포함 범위
 
@@ -38,9 +38,16 @@
 
 ### Adapter Template 기반 Preview
 
-- Codex/Claude/Gemini template 선택
+- Codex adapter와 template 선택
 - Project metadata와 selected source의 논리 mapping
 - 미치환 placeholder 및 unsupported feature 표시
+
+### Read-only Generation Planning
+
+- `dry-run`과 `export-plan` mode 구분
+- `AGENTS.preview.md`, merge trace, skill selection과 validation report 계약
+- `export-plan` mode의 대상 path, 보호 상태와 수동 후속 조치
+- 모든 mode에서 `writePerformed: false`
 
 ### Validation Report
 
@@ -61,6 +68,10 @@
 - 실제 generator 및 validator code
 - CLI, API endpoint와 server
 - Recommendation model과 conflict 자동 수정
+- Claude/Gemini adapter 구현과 preview
+- MSA pending compatibility 해소 또는 수용
+- 고급 AI semantic merge와 자동 의미 충돌 해결
+- 실제 root `AGENTS.md` 자동 write 또는 overwrite
 
 ## Codex 우선 검증
 
@@ -69,7 +80,7 @@
 3. Core/project scope, merge priority, selected skill와 validation checklist를 검증한다.
 4. Git-auto hook과 직접 commit·push 금지 정책이 unsupported/warning에서 누락되지 않는지 확인한다.
 5. `writePerformed: false`와 preview-only 상태를 확인한다.
-6. 기준 안정화 후 같은 resolved context를 Claude/Gemini adapter에 독립 적용한다.
+6. Claude/Gemini와 MSA는 MVP 후속 범위로 분리한다.
 
 Codex 우선은 다른 adapter의 출력 형식이나 capability를 Codex와 같게 만드는 전략이 아니다.
 
@@ -77,19 +88,18 @@ Codex 우선은 다른 adapter의 출력 형식이나 capability를 Codex와 같
 
 - 동일 입력과 source version이 동일한 논리 preview 및 check 결과를 만든다.
 - Missing path, duplicate ID, conflict와 missing bridge가 preview 전에 탐지된다.
-- Profile 기본/optional skill과 lazy loading 상태가 구분된다.
+- Profile skill과 lazy loading 상태가 구분된다.
 - Warning이 있는 preview와 blocking 실패가 명확히 다르다.
-- Adapter별 template와 unsupported feature를 추적할 수 있다.
+- Codex template와 unsupported feature를 추적할 수 있다.
 - 어떤 경우에도 repository file write와 Git operation을 수행하지 않는다.
 
-## 구현 전 결정 필요 사항
+## Phase 10-2 확정 사항
 
-- Catalog와 profile의 path 참조를 ID 참조로 전환하는 시점
-- Semantic rule extraction 및 중복 판단 단위
-- Agent별 context 차이에 따른 기본 output size budget 보정 기준
-- Pending/unregistered 관계의 조직별 허용 정책
-- Adapter capability version metadata
-- Preview content의 serialization과 deterministic 비교 범위
+- 실행 형태, validator, schema, project binding, output write와 dry-run/export 경계는 `generator-pre-implementation-decisions.md`에서 `decided`로 확정했다.
+- Profile path와 catalog ID의 현재 병행 구조를 유지하고 validator가 일치를 검사한다.
+- Pending compatibility는 초기 MVP에서 error로 차단한다.
+- Deterministic output은 UTF-8, LF, template section 순서, merge priority와 안정된 ID 순서를 따른다.
+- Semantic merge의 고급 자동 판단, adapter별 capability 확장과 ID-only schema migration은 후속 범위다.
 
 ## 현재 범위
 

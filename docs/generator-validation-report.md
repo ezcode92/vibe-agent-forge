@@ -45,18 +45,20 @@ Generator pipeline의 검증 결과를 항목별 severity, source, 영향과 pre
 | Path existence | Error | Pending 제외 필수 source/template 존재 | 해당 resolve 중단 |
 | Duplicate ID | Error | Catalog namespace 안 ID 유일 | 임의 항목 선택 금지 |
 | Missing dependency | Error | Fragment/skill hard dependency 충족 | Resolved context 확정 불가 |
-| Unresolved optional item | Warning 또는 Error | Required variant는 해소, optional 추천은 결정 기록 | Required면 blocked, 선택 추천이면 warning |
+| Exactly-one variant | Error | Required variant에서 정확히 하나의 option 선택 | 미선택·복수 선택·알 수 없는 option이면 blocked |
+| Unresolved optional item | Warning | Optional 추천의 선택 여부와 영향 기록 | 필수 조건이 아니면 manual review |
 | Compatibility violation | Error | Incompatible relation 없음 | Conflict 해결 전 blocked |
-| Missing bridge | Error 또는 Warning | 존재하는 required bridge 선택 | Required면 error, bridge 자체 pending이면 warning |
-| Unsupported adapter output | Error 또는 Warning | 필수 output 지원 | 필수면 blocked, optional이면 warning |
+| Pending compatibility | Error | Resolved relation이 모두 supported이고 pending/unregistered가 없음 | 초기 MVP에서는 blocked |
+| Missing bridge | Error | 존재하는 required bridge 선택 | 누락 또는 존재하지 않는 bridge면 blocked |
+| Unsupported adapter feature | Error 또는 Warning | Codex 필수 output 지원 | 필수 target/output이면 blocked, optional capability면 warning |
 | Output length warning | Info, Warning 또는 Error | `docs/output-size-budget.md`와 profile 한도 안에 있고 skill body inline이 없음 | 목표 초과는 warning, error 기준·inline 위반은 blocked |
+| Protected file touched | Error | Generator 전체 실행에서 protected file write가 없음 | Invariant 위반으로 blocked |
 
 ## 추가 권장 검증
 
 - Profile count와 resolved 구성 수의 일치
 - Profile path와 catalog ID mapping
 - Bridge dependency completeness
-- Override scope와 근거
 - 미치환 필수 template placeholder
 - Skill trigger와 lazy loading 상태
 - Merge policy와 catalog numeric priority 일치
@@ -68,10 +70,12 @@ Generator pipeline의 검증 결과를 항목별 severity, source, 영향과 pre
 - Selected profile/adapter 또는 필수 path가 없다.
 - Duplicate ID 때문에 참조가 모호하다.
 - Required dependency, variant 또는 bridge가 미해결이다.
+- Pending 또는 unregistered compatibility가 resolved 입력에 포함된다.
 - Incompatible fragment가 동시에 선택됐다.
 - Semantic conflict를 priority와 근거로 해결할 수 없다.
 - Adapter의 필수 preview target/template이 없다.
 - Validation report 자체를 완성할 수 없다.
+- Root `AGENTS.md`, `.codex/hooks`, `.codex/hooks.json` 또는 `.gitauto/`에 write가 감지된다.
 
 실패 시에도 확인된 error와 not-run 단계는 반환한다. Partial preview를 완성 결과처럼 표시하지 않는다.
 
@@ -83,7 +87,21 @@ Generator pipeline의 검증 결과를 항목별 severity, source, 영향과 pre
 - Warning이 source, 영향과 수동 결정 상태를 가진다.
 - File write가 수행되지 않는다.
 
-Pending 또는 unregistered 관계가 있으면 정책상 허용된 수동 수용 기록이 있을 때만 `ready-with-warnings`가 가능하다.
+초기 MVP에서 pending 또는 unregistered 관계는 error이므로 `ready-with-warnings`로 낮출 수 없다.
+
+## Lifecycle Readiness 판정
+
+- `ready`: Error 0, Warning 0, 모든 필수 check passed, 필수 `not-run` 없음.
+- `ready-with-warnings`: Error 0, 모든 필수 check passed, 각 warning의 source·영향·수동 조치가 기록됨.
+- `blocked`: Error가 하나 이상이거나 선행 error 때문에 필수 check를 완료하지 못함.
+
+이 판정은 `lifecycle-status-policy.md`와 동일하다. Warning 0만으로 필수 check 누락이나 `not-run`을 성공으로 간주하지 않는다.
+
+## Protected File 기준
+
+- MVP generator는 어떤 filesystem write도 수행하지 않으므로 protected file touched의 정상 결과는 항상 passed다.
+- Root `AGENTS.md`, `.codex/hooks`, `.codex/hooks.json`, `.gitauto/` 또는 target project file 변경이 관찰되면 error다.
+- `export-plan`의 target path 표시는 write가 아니며 `writePerformed: false`를 유지한다.
 
 ## Output Length 처리
 
