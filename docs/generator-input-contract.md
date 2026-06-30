@@ -21,12 +21,14 @@ Preview 또는 export plan 요청이 제공해야 할 사용자 선택과 reposi
 - 필수 문자열이다.
 - `registry/profiles.yml`의 유일한 profile ID와 일치해야 한다.
 - Catalog entry의 `path`가 실제 profile manifest를 가리켜야 한다.
+- Profile `draft`는 단독 error가 아니다. 같은 profile·variant의 Codex `ready` dry-run coverage가 있으면 `reviewed-for-mvp`, 없으면 `ready-candidate`로 판정한다.
 
 ### Target Adapter
 
 - 필수 adapter ID다.
 - `registry/adapters.yml`에 존재해야 하며 MVP에서는 `codex`만 지원한다.
 - Claude/Gemini ID는 catalog에 존재해도 `draft`이므로 unsupported target error다.
+- Codex는 `mvp-contract` 상태일 때만 MVP target으로 허용한다.
 
 ### Variant Selection
 
@@ -89,6 +91,7 @@ MVP는 source를 수정하지 않고 읽기 전용으로 해석한다.
 - Variant가 `exactly-one`이면 정확히 하나가 선택된다.
 - Mode가 `dry-run` 또는 `export-plan`이다.
 - Resolved compatibility에 `pending`이 없다.
+- 선택 profile·variant와 무관한 pending compatibility entry는 입력 실패로 처리하지 않는다.
 
 ## 오류 처리 정책
 
@@ -111,6 +114,7 @@ MVP는 source를 수정하지 않고 읽기 전용으로 해석한다.
 - Fragment `conflicts_with` 또는 명시적 incompatible relation은 error다.
 - Required bridge 누락은 error이며 bridge가 존재하지 않는 pending 관계와 구분한다.
 - Pending 또는 unregistered relation은 초기 MVP에서 error다. `spring-msa`, `restful-api-msa`를 supported로 추정하거나 사용자 수용만으로 진행하지 않는다.
+- 위 기준은 resolved 선택 조합에 포함된 relation에만 적용한다. 선택되지 않은 pending entry는 ignored이며 preview readiness에 영향을 주지 않는다.
 
 ### 미해결 Optional 항목
 

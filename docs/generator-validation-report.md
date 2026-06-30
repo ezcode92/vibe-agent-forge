@@ -45,10 +45,12 @@ Generator pipeline의 검증 결과를 항목별 severity, source, 영향과 pre
 | Path existence | Error | Pending 제외 필수 source/template 존재 | 해당 resolve 중단 |
 | Duplicate ID | Error | Catalog namespace 안 ID 유일 | 임의 항목 선택 금지 |
 | Missing dependency | Error | Fragment/skill hard dependency 충족 | Resolved context 확정 불가 |
+| Selected draft profile/fragment/skill | Info 또는 Warning | `reviewed-for-mvp` coverage 또는 `ready-candidate` 근거 존재 | Coverage가 있으면 info, 없으면 warning |
 | Exactly-one variant | Error | Required variant에서 정확히 하나의 option 선택 | 미선택·복수 선택·알 수 없는 option이면 blocked |
 | Unresolved optional item | Warning | Optional 추천의 선택 여부와 영향 기록 | 필수 조건이 아니면 manual review |
 | Compatibility violation | Error | Incompatible relation 없음 | Conflict 해결 전 blocked |
 | Pending compatibility | Error | Resolved relation이 모두 supported이고 pending/unregistered가 없음 | 초기 MVP에서는 blocked |
+| Unselected pending compatibility | Ignored | Resolved 조합에 relation이 포함되지 않음 | Check와 readiness 집계에서 제외 |
 | Missing bridge | Error | 존재하는 required bridge 선택 | 누락 또는 존재하지 않는 bridge면 blocked |
 | Unsupported adapter feature | Error 또는 Warning | Codex 필수 output 지원 | 필수 target/output이면 blocked, optional capability면 warning |
 | Output length warning | Info, Warning 또는 Error | `docs/output-size-budget.md`와 profile 한도 안에 있고 skill body inline이 없음 | 목표 초과는 warning, error 기준·inline 위반은 blocked |
@@ -63,6 +65,17 @@ Generator pipeline의 검증 결과를 항목별 severity, source, 영향과 pre
 - Skill trigger와 lazy loading 상태
 - Merge policy와 catalog numeric priority 일치
 - 기존 git-auto policy를 약화하는 output 포함 여부
+
+## Catalog Status 판정
+
+- 선택 profile, fragment와 skill이 `draft`인 사실만으로 warning이나 error를 만들지 않는다.
+- 같은 profile·variant·Codex adapter와 resolved source가 `ready` dry-run에 있으면 `reviewed-for-mvp` info를 기록한다.
+- 구조·참조 검증은 통과하지만 정확한 dry-run coverage가 없으면 `ready-candidate` warning을 기록한다.
+- Missing path, dependency, conflict와 variant 오류는 draft warning으로 낮추지 않고 각각 error다.
+- Codex adapter `mvp-contract`는 허용한다. Claude/Gemini `draft` adapter를 target으로 선택하면 unsupported target error다.
+- Selected pending/unregistered compatibility는 error다. Unselected pending entry는 ignored이며 전체 catalog에 존재한다는 이유만으로 report readiness를 낮추지 않는다.
+
+세부 coverage와 승격 기준은 `catalog-readiness-policy.md`를 따른다.
 
 ## Generator 실패 조건
 

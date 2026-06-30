@@ -17,6 +17,7 @@
 - Fragment, skill, profile, adapter와 compatibility catalog parse
 - ID index와 version metadata 구성 개념
 - Required field와 중복 ID 검증
+- 선택 자산의 lifecycle과 `reviewed-for-mvp`/`ready-candidate` coverage 판정
 
 ### Path Validation
 
@@ -29,6 +30,7 @@
 - Source/target relation 조회
 - Required bridge와 `conflicts_with` 확인
 - Pending, unregistered와 incompatible 구분
+- 선택되지 않은 pending relation은 실행 readiness에서 제외
 
 ### Merge Order Calculation
 
@@ -84,6 +86,14 @@
 
 Codex 우선은 다른 adapter의 출력 형식이나 capability를 Codex와 같게 만드는 전략이 아니다.
 
+## MVP Status 허용 정책
+
+- Adapter: `mvp-contract`인 Codex만 허용한다. `draft`인 Claude/Gemini는 target error다.
+- Fragment·skill·profile: `draft` status 자체는 허용한다. 정확한 Codex `ready` dry-run coverage가 있으면 `reviewed-for-mvp` info, 없으면 `ready-candidate` warning으로 판정한다.
+- Draft 자산의 path, dependency, bridge, conflict와 variant 오류는 별도 error이며 draft라는 이유로 완화하지 않는다.
+- Compatibility: Selected `pending` 또는 unregistered relation은 error/blocked다. Unselected pending relation은 현재 실행을 막지 않는다.
+- Catalog YAML status는 generator 실행이나 dry-run 결과로 자동 변경하지 않는다.
+
 ## MVP 성공 기준
 
 - 동일 입력과 source version이 동일한 논리 preview 및 check 결과를 만든다.
@@ -100,6 +110,13 @@ Codex 우선은 다른 adapter의 출력 형식이나 capability를 Codex와 같
 - Pending compatibility는 초기 MVP에서 error로 차단한다.
 - Deterministic output은 UTF-8, LF, template section 순서, merge priority와 안정된 ID 순서를 따른다.
 - Semantic merge의 고급 자동 판단, adapter별 capability 확장과 ID-only schema migration은 후속 범위다.
+
+## Phase 10-3 확정 사항
+
+- Catalog lifecycle과 generator readiness를 분리한다.
+- Codex dry-run coverage는 `reviewed-for-mvp` 파생 판정에 사용하되 catalog status를 승격하지 않는다.
+- Coverage가 없는 유효 draft 조합은 `ready-candidate` warning으로 검토할 수 있다.
+- Selected pending compatibility만 차단하고 unselected pending은 실행 판정에서 제외한다.
 
 ## 현재 범위
 

@@ -76,3 +76,23 @@ Phase 8에서 남긴 generator 구현 전 decision gate를 확정한다. 이 문
 - Profile path와 catalog ID는 현재 구조를 유지하고 validator가 양방향 일치를 확인한다. ID-only manifest 전환은 schema version 변경 후보로 미룬다.
 - Merge는 catalog priority, merge policy와 명시적 provenance만 사용한다. 의미 충돌을 AI가 임의 해결하지 않는다.
 - 결정적 artifact는 UTF-8, LF, template section 순서, merge priority와 안정된 ID 순서를 사용한다. 실행 시각 등 가변 metadata는 결정적 content 비교에서 제외한다.
+
+## GEN-DEC-007 Catalog Status 해석
+
+- 결정 ID: `GEN-DEC-007`
+- 결정 상태: `decided`
+- 최종 결정: Fragment, skill과 profile의 `draft`는 단독 warning/error가 아니다. 정확한 Codex `ready` dry-run coverage가 있으면 `reviewed-for-mvp` info, 구조적으로 유효하지만 coverage가 없으면 `ready-candidate` warning으로 판정한다. 두 판정은 catalog status를 변경하지 않는다.
+- 선택 이유: 현재 6개 dry-run은 draft 자산 조합을 검증했지만 개별 catalog lifecycle 승격을 승인한 것은 아니다. 조합 검증 근거를 활용하면서 lifecycle과 실행 readiness를 분리해야 한다.
+- MVP 포함 범위: Selected profile·variant·resolved source와 dry-run coverage 대조, 파생 판정과 severity report.
+- MVP 제외 범위: Registry YAML 자동 수정, catalog status 자동 승격과 implementation readiness 선언.
+- 후속 확장 후보: 자산별 review와 승인 근거를 갖춘 별도 catalog status 승격 작업.
+
+## GEN-DEC-008 Selected/Unselected Pending 처리
+
+- 결정 ID: `GEN-DEC-008`
+- 결정 상태: `decided`
+- 최종 결정: Resolved 선택 조합에 포함된 pending 또는 unregistered compatibility는 error/blocked다. 선택되지 않은 pending entry는 ignored이며 현재 실행 readiness를 낮추지 않는다.
+- 선택 이유: Catalog 전체의 미지원 관계가 무관한 지원 조합을 차단해서는 안 되지만, 실제 선택 조합의 의미 누락은 warning 수용으로 우회할 수 없다.
+- MVP 포함 범위: Resolved relation만 validation 대상으로 평가하고 selected pending을 차단.
+- MVP 제외 범위: `spring-msa`, `restful-api-msa` 해소, 가상 bridge 생성과 사용자 수용에 의한 severity 완화.
+- 후속 확장 후보: MSA profile과 대표 dry-run이 추가된 뒤 bridge 또는 supported 관계 설계.
