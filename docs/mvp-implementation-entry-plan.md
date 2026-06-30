@@ -40,16 +40,35 @@ MVP는 repository source를 읽고 결정적 논리 결과를 반환한다. Sour
 - Unselected pending compatibility: ignored
 - Catalog YAML status는 자동 변경하지 않음
 
-## Phase 11 진입 조건
+## Phase 11-1 진입 조건
 
 1. Phase 10-2 decision 6개와 Phase 10-3 readiness decision이 `decided`다.
 2. Module boundary, file structure와 acceptance criteria가 review됐다.
-3. 구현 언어와 package manager 초기화가 별도 구현 요청에서 승인된다.
+3. Python `>=3.12`, `uv`, runtime `PyYAML`과 dev `pytest`·`ruff`·`mypy` 정책이 승인된다.
 4. 구현 변경이 보호 대상과 문서 자산을 수정하지 않는 검증 방법이 준비된다.
 5. 첫 increment가 filesystem output 없이 독립적으로 test 가능하다.
 
-## 첫 번째 최소 기능
+6. `pyproject.toml`, `uv.lock`, `src/`, `tests/` 생성이 Phase 11-1 구현 요청에 명시적으로 포함된다.
 
-첫 increment는 registry YAML 5종과 profile YAML 6종을 read-only로 load·parse하고 ID index, 필수 field와 source path를 검증한 구조화 report를 반환한다. Preview Markdown, export plan file, CLI와 target project binding은 포함하지 않는다.
+## Phase 11-1 첫 구현 목표
+
+Phase 11-1은 다음 항목만 구현한다.
+
+- Python `src` layout project/package skeleton과 test skeleton
+- Registry YAML 5종 loader와 기본 parse/field 진단
+- Profile YAML 6종 loader와 catalog ID/path 연결
+- Repository-relative source path existence validation
+- Error/warning/info를 담는 canonical machine-readable validation report 초안
+
+Preview Markdown, preview context, output size 평가, export plan, CLI와 target project binding은 포함하지 않는다.
 
 이 increment의 성공 기준은 정상 repository source에 error가 없고, 존재하지 않는 selected profile과 missing source path를 error/blocked로 일관되게 보고하는 것이다.
+
+## Phase 11-1 검증 계약
+
+- `uv run pytest`
+- `uv run ruff check .`
+- `uv run ruff format --check .`
+- `uv run mypy src`
+
+이 명령 정책은 Phase 11-1에서 project metadata와 함께 구현한다. Phase 11-0에서는 실행 대상 초기화 파일을 만들지 않는다.

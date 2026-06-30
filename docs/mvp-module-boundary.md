@@ -27,6 +27,31 @@ Phase 11 구현에서 책임이 섞이지 않도록 논리 module의 입력, 출
 | Output planner | Mode와 검증된 context | Logical artifact set과 선택적 export plan | Artifact 대상, 순서, 보호 상태와 `writePerformed: false` 기록 | Directory/file 생성, overwrite와 installer 수행 |
 | Validation report builder | 모든 단계 진단과 not-run 정보 | Canonical structured report와 Markdown view model | Severity 집계, readiness와 deterministic ordering | Error 완화, source 수정, renderer-specific 정책 소유 |
 
+## Phase 11-1 구현 구분
+
+| Module | Phase 11-1 상태 | 범위 |
+| --- | --- | --- |
+| Registry loader | 포함 | Catalog 5종 load·parse와 기본 구조 진단 |
+| Profile loader | 포함 | Manifest 6종 load·parse와 catalog ID/path 대조 |
+| Path resolver | 포함 | Repository-relative source path 존재 확인 |
+| Validation report builder | 포함 | Machine-readable report 최소 field, severity 집계와 blocked 판정 |
+| Adapter loader | 후속 | Codex contract/template validation increment에서 구현 |
+| Compatibility checker | 후속 | Selected/unselected relation validation increment에서 구현 |
+| Variant resolver | 후속 | Fullstack exactly-one validation increment에서 구현 |
+| Readiness evaluator | 후속 | Dry-run coverage와 catalog status evaluation increment에서 구현 |
+| Preview context builder | 후속 | Loader/validator 결과 안정화 뒤 구현 |
+| Output planner | 후속 | Logical preview/export-plan 단계에서 구현 |
+
+Phase 11-1은 후속 module의 빈 interface, placeholder class 또는 future package를 미리 만들지 않는다.
+
+## Phase 11-1 제외 Boundary
+
+- Adapter rendering과 Markdown preview materialization
+- Output/export writer와 write approval
+- CLI entrypoint와 command routing
+- Web UI, API endpoint와 database
+- Installer, Git/publisher와 protected-file helper
+
 ## 의존 방향
 
 Loaders가 source model을 제공하고 resolver/checker가 validated context를 만든다. Readiness evaluator와 preview context builder는 validated context만 소비한다. Output planner와 validation report builder는 최종 논리 결과를 구성한다. 뒤 단계는 앞 단계의 source를 변경하거나 loader에 정책 결정을 역으로 요구하지 않는다.

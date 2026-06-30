@@ -4,6 +4,31 @@
 
 Phase 11 read-only MVP의 완료 조건을 검증 가능한 결과로 정의한다. 모든 기준은 Codex-only, no-write와 deterministic report 계약을 전제로 한다.
 
+## Phase 11-1 Acceptance Criteria
+
+### Project와 Quality Gate
+
+- `pyproject.toml`이 Python `>=3.12`, `uv` project, runtime `PyYAML`, dev `pytest`·`ruff`·`mypy`를 선언한다.
+- `uv.lock`이 project dependency resolution을 고정한다.
+- `src/agentforge/`와 `tests/`가 Python `src` layout으로 존재한다.
+- `uv run pytest`, `uv run ruff check .`, `uv run ruff format --check .`, `uv run mypy src`가 통과한다.
+
+### Loader와 Path Validation
+
+- Registry YAML 5개를 모두 load·parse할 수 있다.
+- Profile YAML 6개를 모두 load·parse할 수 있다.
+- Profile catalog ID/path와 manifest ID를 대조할 수 있다.
+- Missing selected profile과 missing source path를 canonical machine-readable report의 error로 기록한다.
+- Error가 있으면 report readiness는 `blocked`다.
+
+### Side Effect 제한
+
+- Root `AGENTS.md`, `.codex/`, `.gitauto/`와 기존 문서/YAML source는 변경하지 않는다.
+- Preview, Markdown report, export plan과 target project file을 생성하지 않는다.
+- CLI entrypoint, Web UI/API/DB, installer와 Claude/Gemini runtime module을 만들지 않는다.
+
+Phase 11-1 완료는 전체 Phase 11 MVP 완료가 아니다. Variant, compatibility, readiness, preview planning과 output size 평가는 후속 increment acceptance를 적용한다.
+
 ## Source Load와 구조
 
 - Registry YAML 5개를 load·parse하고 version, root type과 필수 field를 검증한다.

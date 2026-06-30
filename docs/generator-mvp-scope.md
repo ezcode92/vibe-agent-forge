@@ -127,6 +127,13 @@ Codex 우선은 다른 adapter의 출력 형식이나 capability를 Codex와 같
 - 권장 module과 file structure 및 완료 기준은 `mvp-module-boundary.md`, `mvp-file-structure-plan.md`, `mvp-acceptance-criteria.md`를 따른다.
 - Claude/Gemini, MSA pending 해소, CLI, Web UI, installer와 actual export는 Phase 11 진입 범위 밖이다.
 
+## Phase 11-1 첫 구현 Slice
+
+- Python `>=3.12`, `uv`, `PyYAML`과 최소 quality dependency로 project를 초기화한다.
+- Registry/profile loader, path resolver와 canonical machine-readable report 최소 책임만 구현한다.
+- Phase 11-1은 전체 read-only MVP 완료가 아니며 adapter, variant, compatibility, readiness와 preview/output planning은 후속 increment다.
+- Actual export/write, root `AGENTS.md`, Claude/Gemini와 MSA pending 해소는 계속 범위 밖이다.
+
 ## 현재 범위
 
 이 문서는 MVP의 설계 경계와 성공 기준만 정의한다. Generator, validator, CLI, API, Web UI와 file writer implementation은 만들지 않는다.

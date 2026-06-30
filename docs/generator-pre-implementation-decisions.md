@@ -146,3 +146,53 @@ Phase 8에서 남긴 generator 구현 전 decision gate를 확정한다. 이 문
 - MVP 포함 범위: Report field 의미, ordering, severity와 readiness.
 - MVP 제외 범위: JSON Schema, API response, Markdown file writer와 renderer styling.
 - 후속 확장 후보: Canonical model 안정화 후 serialization format과 Markdown renderer.
+
+## GEN-DEC-014 Python Runtime
+
+- 결정 ID: `GEN-DEC-014`
+- 결정 상태: `decided`
+- 최종 결정: Phase 11 MVP는 Python `>=3.12`를 지원하고 Phase 11-1의 기준 runtime과 test baseline은 Python 3.12로 고정한다.
+- 선택 이유: Modern typing과 표준 library를 사용할 수 있는 명확한 최소선을 두면서 새로운 framework 없이 read-only YAML processing을 구현할 수 있다.
+- MVP 포함 범위: Python requirement와 baseline test runtime.
+- MVP 제외 범위: Multiple Python version matrix와 이전 version 지원.
+- 후속 확장 후보: Phase 11-1 안정화 후 newer Python compatibility 검증.
+
+## GEN-DEC-015 Package Manager
+
+- 결정 ID: `GEN-DEC-015`
+- 결정 상태: `decided`
+- 최종 결정: `uv`를 단일 package/environment manager로 사용하고 root `pyproject.toml`과 `uv.lock`을 Phase 11-1에서 생성한다.
+- 선택 이유: Project metadata, dependency resolution과 quality command 환경을 하나의 workflow로 관리하고 중복 requirements file을 피한다.
+- MVP 포함 범위: Project initialization, dependency sync와 lock.
+- MVP 제외 범위: 별도 pip requirements, Poetry/PDM config와 container build.
+- 후속 확장 후보: 배포 packaging 요구가 생길 때 build backend와 release policy 확정.
+
+## GEN-DEC-016 Dependency Policy
+
+- 결정 ID: `GEN-DEC-016`
+- 결정 상태: `decided`
+- 최종 결정: Runtime dependency는 `PyYAML` 하나로 제한하고 dev dependency는 `pytest`, `ruff`, `mypy`로 제한한다. CLI/Web/schema/template framework는 추가하지 않는다.
+- 선택 이유: Phase 11-1의 YAML load, test, lint/format과 type check에 필요한 최소 집합이며 나머지 책임은 standard library로 충족할 수 있다.
+- MVP 포함 범위: YAML parse와 local quality gate.
+- MVP 제외 범위: CLI framework, Web framework, data validation framework, renderer와 AI dependency.
+- 후속 확장 후보: Acceptance criteria로 필요성이 확인된 dependency만 별도 review.
+
+## GEN-DEC-017 Quality Command Policy
+
+- 결정 ID: `GEN-DEC-017`
+- 결정 상태: `decided`
+- 최종 결정: Test는 `uv run pytest`, lint는 `uv run ruff check .`, format 검증은 `uv run ruff format --check .`, type check는 `uv run mypy src`를 사용한다.
+- 선택 이유: Test, style, formatting과 type safety를 독립적으로 검증하고 자동 rewrite와 검증 명령을 구분한다.
+- MVP 포함 범위: Phase 11-1 완료 gate의 네 명령.
+- MVP 제외 범위: Coverage threshold, CI matrix와 자동 release.
+- 후속 확장 후보: Test volume과 CI 도입 시 coverage 및 multi-version policy 검토.
+
+## GEN-DEC-018 Phase 11-1 Implementation Boundary
+
+- 결정 ID: `GEN-DEC-018`
+- 결정 상태: `decided`
+- 최종 결정: Phase 11-1은 Python project/package skeleton, registry/profile loader, path existence validation과 canonical machine-readable report 초안만 구현한다.
+- 선택 이유: Load·parse·path error와 report 계약을 가장 작은 독립 slice로 검증한 뒤 variant/compatibility/preview 책임을 추가해야 한다.
+- MVP 포함 범위: `pyproject.toml`, `uv.lock`, 필요한 `src/agentforge/` module과 해당 `tests/`.
+- MVP 제외 범위: Adapter rendering, variant/compatibility evaluator, preview/output planner, CLI, actual write와 future placeholder module.
+- 후속 확장 후보: Codex adapter, variant, compatibility, readiness와 preview planning increment.
