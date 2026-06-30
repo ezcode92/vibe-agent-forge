@@ -96,3 +96,53 @@ Phase 8에서 남긴 generator 구현 전 decision gate를 확정한다. 이 문
 - MVP 포함 범위: Resolved relation만 validation 대상으로 평가하고 selected pending을 차단.
 - MVP 제외 범위: `spring-msa`, `restful-api-msa` 해소, 가상 bridge 생성과 사용자 수용에 의한 severity 완화.
 - 후속 확장 후보: MSA profile과 대표 dry-run이 추가된 뒤 bridge 또는 supported 관계 설계.
+
+## GEN-DEC-009 Implementation Entry Scope
+
+- 결정 ID: `GEN-DEC-009`
+- 결정 상태: `decided`
+- 최종 결정: Phase 11은 read-only load·parse·resolve·validate와 canonical report planning부터 시작한다. Preview materialization과 export plan은 후속 increment이며 filesystem write는 포함하지 않는다.
+- 선택 이유: Source 무결성과 진단 계약을 먼저 검증해야 preview 결과의 신뢰성과 deterministic behavior를 보장할 수 있다.
+- MVP 포함 범위: Pipeline stage 1–6과 stage 11 최소 report subset.
+- MVP 제외 범위: Artifact file, CLI, Web UI, installer와 actual export.
+- 후속 확장 후보: Stage 7–10 logical preview/export-plan planning.
+
+## GEN-DEC-010 Module Boundary
+
+- 결정 ID: `GEN-DEC-010`
+- 결정 상태: `decided`
+- 최종 결정: Loader, resolver, checker/evaluator, context builder, output planner와 report builder 책임을 분리하고 뒤 단계가 source를 수정하지 않는 단방향 의존을 사용한다.
+- 선택 이유: Parse, 정책 판정과 output planning을 분리해야 test isolation과 no-write invariant를 유지할 수 있다.
+- MVP 포함 범위: `mvp-module-boundary.md`에 정의한 10개 논리 module 책임.
+- MVP 제외 범위: Code/class 이름, dependency injection framework, Web/API/DB boundary.
+- 후속 확장 후보: 구현 언어 관례에 맞춘 package 내부 세분화.
+
+## GEN-DEC-011 File Structure Recommendation
+
+- 결정 ID: `GEN-DEC-011`
+- 결정 상태: `decided`
+- 최종 결정: Python 3, root `pyproject.toml`, `uv`, `src/agentforge/`와 `tests/` 구조를 Phase 11 초기화 후보로 권장한다. Phase 10-4에서는 해당 파일과 디렉터리를 만들지 않는다.
+- 선택 이유: 단일 read-only YAML processing package와 fixture 기반 test를 문서 자산에서 분리하면서 향후 Web UI와도 경로가 충돌하지 않는다.
+- MVP 포함 범위: Source layout과 test placement 권고.
+- MVP 제외 범위: Python version, dependency 목록, lock file과 실제 project initialization.
+- 후속 확장 후보: Phase 11 시작 시 tool version과 dependency 승인.
+
+## GEN-DEC-012 Acceptance Criteria
+
+- 결정 ID: `GEN-DEC-012`
+- 결정 상태: `decided`
+- 최종 결정: Source load, selected combination validation, readiness/severity, deterministic report와 protected no-write invariant를 `mvp-acceptance-criteria.md`의 Phase 11 완료 gate로 사용한다.
+- 선택 이유: 구현 완료를 file 수가 아니라 observable behavior와 failure scenario로 판정해야 한다.
+- MVP 포함 범위: 정상·오류·pending·variant·size·protected-file scenario.
+- MVP 제외 범위: Root `AGENTS.md` write, artifact materialization과 runtime deployment.
+- 후속 확장 후보: Preview renderer와 actual export용 별도 acceptance gate.
+
+## GEN-DEC-013 Report Format Priority
+
+- 결정 ID: `GEN-DEC-013`
+- 결정 상태: `decided`
+- 최종 결정: Canonical machine-readable logical report를 우선하고 Markdown report를 파생 representation으로 둔다. Initial increment는 serialization schema와 file materialization 없이 structured result를 반환한다.
+- 선택 이유: Deterministic test와 여러 future consumer가 presentation-specific Markdown보다 안정된 의미 model을 먼저 요구한다.
+- MVP 포함 범위: Report field 의미, ordering, severity와 readiness.
+- MVP 제외 범위: JSON Schema, API response, Markdown file writer와 renderer styling.
+- 후속 확장 후보: Canonical model 안정화 후 serialization format과 Markdown renderer.

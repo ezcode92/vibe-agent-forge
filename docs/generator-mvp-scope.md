@@ -118,6 +118,15 @@ Codex 우선은 다른 adapter의 출력 형식이나 capability를 Codex와 같
 - Coverage가 없는 유효 draft 조합은 `ready-candidate` warning으로 검토할 수 있다.
 - Selected pending compatibility만 차단하고 unselected pending은 실행 판정에서 제외한다.
 
+## Phase 10-4 구현 진입 범위
+
+- Phase 11의 첫 범위는 registry/profile load·parse, ID/path resolve, dependency·variant·compatibility validation과 canonical report planning이다.
+- Preview context와 export plan은 앞 단계의 structured result가 안정된 뒤 후속 increment로 구현한다.
+- Initial MVP는 logical content만 반환하고 Markdown과 artifact file을 materialize하지 않는다.
+- 실제 root `AGENTS.md`, target project와 repository source write는 구현하지 않는다.
+- 권장 module과 file structure 및 완료 기준은 `mvp-module-boundary.md`, `mvp-file-structure-plan.md`, `mvp-acceptance-criteria.md`를 따른다.
+- Claude/Gemini, MSA pending 해소, CLI, Web UI, installer와 actual export는 Phase 11 진입 범위 밖이다.
+
 ## 현재 범위
 
 이 문서는 MVP의 설계 경계와 성공 기준만 정의한다. Generator, validator, CLI, API, Web UI와 file writer implementation은 만들지 않는다.

@@ -18,6 +18,26 @@ Generator pipeline의 검증 결과를 항목별 severity, source, 영향과 pre
 
 각 check는 code, severity, status, message, source ID/path, pipeline stage, 영향과 권장 조치를 가진다.
 
+## Phase 11 Report 형식 우선순위
+
+1. Canonical machine-readable logical report를 source of truth로 구현한다.
+2. 사람이 읽는 Markdown report는 canonical report에서 파생하는 secondary representation으로 둔다.
+3. Initial increment는 in-memory structured result를 우선하며 JSON/YAML schema file과 Markdown file materialization은 만들지 않는다.
+
+Machine-readable 우선은 API endpoint나 특정 serialization format을 확정한다는 뜻이 아니다. Field 의미, ordering과 readiness가 안정된 뒤 serialization format을 별도 결정한다.
+
+## Phase 11 최소 Report 항목
+
+- Selected profile, variant, adapter와 mode
+- 사용한 catalog version과 source provenance
+- Check code, severity, status, message와 pipeline stage
+- 관련 source ID/path와 영향
+- Error/warning/info count와 blocking root cause
+- `not-run` 단계와 선행 실패
+- `reviewed-for-mvp` 또는 `ready-candidate`
+- `ready`, `ready-with-warnings` 또는 `blocked`
+- `writePerformed: false`와 protected-file invariant 결과
+
 ## Severity 정의
 
 ### Error

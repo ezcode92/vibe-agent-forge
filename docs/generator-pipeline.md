@@ -94,6 +94,26 @@
 
 11단계 모두 source repository와 target project에 대해 read-only다. `export-plan`도 write 계획만 반환하며 실제 file writer 단계는 MVP pipeline에 없다. Write capability는 별도 승인 전까지 disabled 상태다.
 
+## Phase 11 구현 순서
+
+### 첫 Increment
+
+- Stage 1–2: Registry/profile load, YAML parse, version과 필수 field 검증
+- Stage 3–6: Path/ID resolve, dependency, variant, compatibility와 conflict 검증
+- Stage 11의 최소 subset: 앞 단계 진단을 canonical machine-readable logical report로 집계
+
+첫 increment는 preview context, Markdown renderer와 filesystem artifact를 만들지 않는다.
+
+### 후속 Increment
+
+- Stage 7–9: Merge order, Codex template와 preview context planning
+- Stage 10: Preview 및 export plan의 logical content 구성
+- Stage 11 확장: Output size와 전체 readiness, 사람이 읽는 Markdown view model
+
+### Out of Scope
+
+Filesystem write, write approval, backup, overwrite와 rollback은 11단계 pipeline에 추가하지 않는다. 실제 export capability는 별도 phase와 승인 대상이다.
+
 ## 현재 범위
 
 이 pipeline은 설계 계약이다. 실행 graph, class, function, CLI command, API와 generator implementation은 만들지 않는다.

@@ -11,8 +11,9 @@
 - Registry: `registry/`, `registry-catalog-guide.md`
 - 상태 정책: `lifecycle-status-policy.md`
 - Catalog readiness: `catalog-readiness-policy.md`
+- MVP 구현 진입: `mvp-implementation-entry-plan.md`, `mvp-module-boundary.md`, `mvp-file-structure-plan.md`, `mvp-acceptance-criteria.md`
 
-현재 Phase 0~10-3의 문서·설계 gate는 완료됐다. Phase 10-3에서 draft catalog, dry-run coverage와 selected/unselected pending의 MVP 판정 정책을 확정했지만 실제 generator, validator, CLI, Web UI 또는 installer 구현은 시작하지 않았다.
+현재 Phase 0~10-4의 문서·설계 gate는 완료됐다. Phase 10-4에서 Phase 11의 read-only 구현 진입 범위, module boundary, 권장 file structure와 acceptance criteria를 확정했지만 실제 generator, validator, CLI, Web UI 또는 installer 구현은 시작하지 않았다.
 
 ## Web UI 설계
 
