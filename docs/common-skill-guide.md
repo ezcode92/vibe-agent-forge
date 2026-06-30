@@ -52,4 +52,4 @@ Profile은 skill 본문을 복제하지 않고 `skills`에 registry 식별자만
 
 ## 현재 범위
 
-현재는 common `SKILL.md` 8종의 초안과 선택 기준만 정의한다. Stack-specific skill, 실제 profile YAML, skill catalog, agent별 metadata, 실행 script와 installer는 만들지 않는다.
+현재 common `SKILL.md` 8종과 stack-specific skill, profile YAML 및 skill catalog가 문서 자산으로 존재한다. 이 문서는 common skill의 선택 기준을 정의하며 agent별 실행 metadata, script와 installer는 구현하지 않는다.

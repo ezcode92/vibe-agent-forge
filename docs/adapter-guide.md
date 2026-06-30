@@ -51,9 +51,9 @@ Codex 구현 전에도 현재 저장소의 `.codex/hooks`는 git-auto 작업 기
 
 | Adapter | 기본 지침 출력 | 설정 scope | 조건부 절차·확장 영역 | 현재 상태 |
 | --- | --- | --- | --- | --- |
-| Codex | 전역 `~/.codex/AGENTS.md`, repo `AGENTS.md` | User/global 및 repository | User/repo skill directory, `.codex/hooks.json` | 기준 설계 초안 |
-| Claude | `CLAUDE.md` | Project/local settings 개념 | Hooks, commands, skills 확장 영역 | 개념 mapping 초안 |
-| Gemini | `GEMINI.md` | Workspace/user settings 개념 | MCP/settings 확장 영역 | 개념 mapping 초안 |
+| Codex | 전역 `~/.codex/AGENTS.md`, repo `AGENTS.md` | User/global 및 repository | User/repo skill directory, `.codex/hooks.json` | `mvp-contract` |
+| Claude | `CLAUDE.md` | Project/local settings 개념 | Hooks, commands, skills 확장 영역 | `draft` |
+| Gemini | `GEMINI.md` | Workspace/user settings 개념 | MCP/settings 확장 영역 | `draft` |
 
 표의 출력 대상은 구현 완료나 현재 agent version의 지원 보장을 뜻하지 않는다. 실제 adapter 구현 전에 공식 capability, scope와 충돌 정책을 확인해야 한다.
 
@@ -67,11 +67,11 @@ Codex 구현 전에도 현재 저장소의 `.codex/hooks`는 git-auto 작업 기
 
 ## Template 사용 원칙
 
-- `templates/codex/AGENTS.md.template`, `templates/claude/CLAUDE.md.template`, `templates/gemini/GEMINI.md.template`은 논리적 출력 shape를 검토하기 위한 초안이다.
+- `templates/codex/AGENTS.md.template`은 Codex `mvp-contract`와 호환되고 Claude/Gemini template은 `draft` adapter의 논리적 output shape를 검토한다.
 - `<...>` placeholder는 향후 generator가 검증된 입력으로 치환할 위치를 나타낸다.
 - Template에는 실제 fragment 본문, project secret, 명령과 선택되지 않은 skill을 넣지 않는다.
 - 미치환 placeholder가 있는 결과는 완성된 agent 설정으로 간주하지 않는다.
 
 ## 현재 범위
 
-현재는 Codex, Claude, Gemini adapter 계약과 출력 template만 정의한다. 실제 adapter code, merge engine, generator, installer, settings/hook 생성과 Web UI는 만들지 않는다.
+현재 Codex `mvp-contract`, Claude/Gemini `draft` adapter 문서와 output template이 존재한다. 실제 adapter code, merge engine, generator, installer, settings/hook 생성과 Web UI는 구현하지 않는다.

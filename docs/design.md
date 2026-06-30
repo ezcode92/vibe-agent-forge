@@ -1,4 +1,4 @@
-# VibeAgentForge Phase 0 설계
+# VibeAgentForge 전체 설계와 단계 체계
 
 ## 프로젝트 목적
 
@@ -48,24 +48,34 @@ AgentForge는 다음 책임 단위로 설정을 분리한다.
 
 ## 현재 하지 않을 것
 
-Phase 0에서는 다음 항목을 구현하거나 구체 파일 형식으로 확정하지 않는다.
+현재 문서·설계 단계에서는 다음 항목을 구현하지 않는다.
 
 - fragment 병합기와 generator
 - 로컬·원격 installer
 - Web UI와 관리 API
-- Claude Code·Gemini CLI adapter
-- profile YAML 및 registry 데이터
-- 실제 공통 skill과 stack-specific skill
+- Claude Code·Gemini CLI adapter 실행 기능
 - 배포, 버전 업데이트, 원격 동기화 기능
 
-## Phase 구분
+Profile YAML, registry catalog, fragment, skill과 adapter 계약 문서는 이미 존재한다. 이 자산의 존재와 실제 조합·설치 기능 구현을 구분한다.
 
-| Phase | 목표 | 주요 결과 |
+## 현재 Phase 구분
+
+| Phase | 상태 | 주요 결과 |
 | --- | --- | --- |
-| Phase 0 | 설계 기준 고정 | 책임 경계, stack catalog, profile 명세, merge 정책, skill 명세 |
-| Phase 1 | 구성 자산 정의 | 검증된 fragment·bridge·profile·skill의 실제 형식과 registry 계약 |
-| Phase 2 | Codex 조합 기능 | 병합·검증·생성 흐름과 Codex adapter, 최소 명령 인터페이스 |
-| Phase 3 | 다중 에이전트 확장 | Claude Code와 Gemini CLI adapter 및 의미 동등성 검증 |
-| Phase 4 | 배포·관리 확장 | installer, 버전 관리, Web UI 등 운영 기능 |
+| Phase 0 | 완료 | 책임 경계, stack catalog, profile 명세, merge와 skill 설계 기준 |
+| Phase 1 | 완료 | Skeleton 디렉터리, README와 template 구조 |
+| Phase 2 | 완료 | Core·language·framework/platform·database/API/architecture·bridge fragment 체계 |
+| Phase 3 | 완료 | Common, backend/database/testing/automation, frontend/mobile skill 체계 |
+| Phase 4 | 완료 | 6개 profile manifest와 variant·constraint 표현 |
+| Phase 5 | 완료 | Codex·Claude·Gemini adapter 설계; Codex만 `mvp-contract` |
+| Phase 6 | 완료 | Fragment·skill·profile·adapter·compatibility registry catalog |
+| Phase 7 | 완료 | Web UI의 정보 구조, flow, 데이터 모델과 MVP 범위 설계 |
+| Phase 8 | 진행 중 | Generator 계약과 pipeline 설계; 구현 전 결정사항은 미확정 |
+| Phase 9 | 완료 | Codex profile 및 fullstack language variant manual dry-run 6종 |
+| Phase 10-1 | 완료 | 문서 상태, Phase와 lifecycle 설명 정합화 |
 
-각 Phase는 이전 Phase의 문서와 계약이 검토된 뒤 시작한다. 후속 Phase 항목은 방향을 나타내며 현재 구현 승인을 의미하지 않는다.
+Phase 상태는 문서·설계 산출물의 진행도를 나타낸다. Catalog의 `draft`, adapter의 `mvp-contract`, dry-run의 `ready` 같은 lifecycle/readiness 상태와 동일한 축이 아니다. 상태 의미와 승격 기준은 `lifecycle-status-policy.md`를 따른다.
+
+## 장기 구현 방향
+
+현재 Phase 체계 이후 실제 구현을 승인할 경우에는 Codex 조합 기능, 다중 agent 확장, 배포·관리 기능 순으로 검토한다. 이 방향에는 merge engine, validator, generator, adapter 실행 기능, installer와 Web UI가 포함될 수 있지만 현재 작업 범위나 구현 승인을 뜻하지 않는다.

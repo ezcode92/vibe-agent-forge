@@ -64,4 +64,4 @@ Bridge fragment는 `docs/merge-policy.md`에 따라 core, language, architecture
 
 ## 현재 범위
 
-현재 문서는 Spring–Modular Monolith를 포함한 8개 bridge fragment 초안의 적용·병합 기준만 정의한다. 실제 bridge 실행 코드, generator와 installer는 아직 만들지 않는다.
+현재 Spring–Modular Monolith를 포함한 bridge fragment 8개가 존재하며 registry와 profile에서 조합 관계를 참조한다. 이 문서는 적용·병합 기준을 정의하며 bridge 실행 코드, generator와 installer는 구현하지 않는다.

@@ -120,3 +120,5 @@ Phase 9의 대표 Codex profile 및 fullstack language variant dry-run은 모두
 ## 현재 범위
 
 현재 manual dry-run은 문서 기반 검증이다. Example은 source-of-truth가 아니며 원본 profile, catalog, fragment, skill과 adapter를 대체하지 않는다.
+
+6개 Codex dry-run의 `ready`는 `lifecycle-status-policy.md`의 수동 readiness 기준을 적용한 결과다. Generator 구현 전 남은 결정은 `generator-pre-implementation-decisions.md`에서 관리한다.

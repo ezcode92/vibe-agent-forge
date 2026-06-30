@@ -2,6 +2,17 @@
 
 프로젝트의 아키텍처, 용어, 의사결정과 설계 원칙을 기록합니다. 초기 단계에서는 구현 명세보다 책임 경계와 구성 요소 간 관계를 우선해 문서화합니다.
 
+## 현재 문서 자산
+
+- Fragment: `core/`, `stacks/`와 관련 `*-fragment-guide.md`
+- Skill: `skills/`, `common-skill-guide.md`, `stack-specific-skill-guide.md`, `frontend-mobile-skill-guide.md`
+- Profile: `profiles/`, `profile-spec.md`, `profile-manifest-guide.md`
+- Adapter: `adapters/`, `adapter-guide.md`; Codex는 `mvp-contract`, Claude/Gemini는 `draft`
+- Registry: `registry/`, `registry-catalog-guide.md`
+- 상태 정책: `lifecycle-status-policy.md`
+
+현재 Phase 0~7, Phase 9와 Phase 10-1의 문서·설계 결과는 완료됐고 Phase 8은 구현 전 결정사항을 정리하는 중이다. 완료 표시는 실제 generator, validator, CLI, Web UI 또는 installer 구현을 뜻하지 않는다.
+
 ## Web UI 설계
 
 Web UI의 방향, 화면 구조, profile builder, compatibility/conflict, preview/export, project binding, 개념 데이터 모델과 MVP 범위는 `web-ui-*.md` 및 관련 flow 문서에서 설명합니다. 현재는 텍스트 기반 설계만 존재하며 실제 Web UI, API, database, generator와 installer 구현은 없습니다.
@@ -9,6 +20,8 @@ Web UI의 방향, 화면 구조, profile builder, compatibility/conflict, previe
 ## MVP Generator 설계
 
 Generator의 입력·출력 계약, 처리 pipeline, fragment merge, skill 선택, validation report와 MVP 범위는 `generator-*.md`, `fragment-merge-strategy.md`, `skill-selection-strategy.md`에서 설명합니다. 현재는 preview-only 설계 단계이며 generator, validator, CLI, API와 file writer 구현은 없습니다.
+
+구현 전에 결정해야 할 실행 형태, validator와 schema 범위, project binding, output write 승인과 dry-run/export 경계는 `generator-pre-implementation-decisions.md`에서 관리합니다.
 
 ## Manual Dry-run
 
@@ -21,3 +34,7 @@ Python CLI와 automation의 command, side effect, retry 및 workflow 경계와 f
 ## Codex Adapter 계약
 
 Codex adapter의 공식 MVP 계약과 template 상태는 `codex-adapter-contract.md`, section별 source·placeholder 규칙은 `codex-output-mapping.md`, template 문구 정합성을 포함한 severity와 readiness 판정은 `codex-adapter-validation.md`에서 설명합니다. `mvp-contract`는 preview 계약의 확정을 뜻하며 generator, validator, CLI, file writer와 실제 Codex 설정 export는 아직 구현되지 않았습니다.
+
+## Compatibility Pending
+
+Compatibility matrix의 `spring-msa`, `restful-api-msa`는 `compatibility-pending-items.md`에서 보류 이유, bridge 판단 기준과 현재 MVP 영향을 설명합니다. 두 항목은 지원 완료로 해석하지 않습니다.

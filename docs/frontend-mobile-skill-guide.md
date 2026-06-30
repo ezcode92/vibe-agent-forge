@@ -49,4 +49,4 @@ Profile은 모든 frontend/mobile skill을 기본 포함하지 않고 품질 gat
 
 ## 현재 범위
 
-현재는 frontend 4종과 Flutter mobile 4종의 `SKILL.md` 초안만 정의한다. 실제 profile YAML, skill catalog, library-specific skill, UI 코드, build script와 installer는 만들지 않는다.
+현재 frontend 4종과 Flutter mobile 4종의 `SKILL.md`가 존재하며 profile YAML과 skill catalog에서 참조한다. Library-specific skill, UI 코드, build script와 installer는 구현하지 않는다.
